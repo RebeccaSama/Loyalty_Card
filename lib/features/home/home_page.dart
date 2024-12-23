@@ -6,6 +6,7 @@ import 'package:loyalty_card/data/data_images.dart';
 import 'package:loyalty_card/features/home/widgets/collection_products_list_horizontal.dart';
 import 'package:loyalty_card/features/home/widgets/home_header_main.dart';
 import 'package:loyalty_card/features/home/widgets/store_widget.dart';
+import 'package:loyalty_card/features/notification/notification_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -45,7 +46,15 @@ class _HomePageState extends State<HomePage> {
                 fit: BoxFit.contain,
               ),
               actions: [
-                Image.asset('assets/images/Icons.png', height: 24, width: 24),
+                GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const NotificationPage()));
+                    },
+                    child: Image.asset('assets/images/Icons.png',
+                        height: 24, width: 24)),
                 PopupMenuButton(
                   borderRadius: const BorderRadius.only(
                       bottomLeft: Radius.circular(20),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:loyalty_card/core/theme/themes.dart';
 import 'package:loyalty_card/features/catalogue/catalogue_view.dart';
 import 'package:loyalty_card/features/home/home_page.dart';
+import 'package:loyalty_card/features/qr_code/qr_code_page.dart';
 import 'package:stylish_bottom_bar/stylish_bottom_bar.dart';
 
 class BottomNavigation extends StatefulWidget {
@@ -103,8 +104,8 @@ class _BottomNavigationState extends State<BottomNavigation> {
             borderSide: const BorderSide(color: AppTheme.kPrimaryColor)),
         backgroundColor: AppTheme.kPrimaryColor,
         onPressed: () {
-          // Add action for FAB here
-          debugPrint('FAB Pressed!');
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const QRViewState()));
         },
         child: const Icon(Icons.qr_code, color: Colors.white),
       ),
