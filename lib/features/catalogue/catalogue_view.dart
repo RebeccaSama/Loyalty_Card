@@ -60,7 +60,7 @@ class _CatalogueViewState extends State<CatalogueView> {
               price: "100 000",
             );
           },
-          separatorBuilder: (context, _) => const SizedBox(height: 16),
+          separatorBuilder: (context, _) => const SizedBox(height: 8),
           itemCount: 20,
         ),
       ),

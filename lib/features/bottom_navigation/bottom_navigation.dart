@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:loyalty_card/core/theme/themes.dart';
 import 'package:loyalty_card/features/catalogue/catalogue_view.dart';
+import 'package:loyalty_card/features/historique/historique_view.dart';
 import 'package:loyalty_card/features/home/home_page.dart';
 import 'package:loyalty_card/features/qr_code/qr_code_page.dart';
 import 'package:stylish_bottom_bar/stylish_bottom_bar.dart';
@@ -121,7 +122,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
           children: const [
             HomePage(), // Replace with your respective pages
             CatalogueView(),
-            HomePage(),
+            HistoriqueView(),
             HomePage(),
           ],
         ),
