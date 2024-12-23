@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:loyalty_card/core/common/custom_button.dart';
+import 'package:loyalty_card/core/common/custom_text_field.dart';
 import 'package:loyalty_card/core/common/phonein_put_ield.dart';
 import 'package:loyalty_card/core/theme/themes.dart';
-import 'package:loyalty_card/features/verification/verification_view.dart';
+import 'package:loyalty_card/features/succes/succes_view.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class InscriptionView extends StatefulWidget {
+  const InscriptionView({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<InscriptionView> createState() => _InscriptionViewState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _InscriptionViewState extends State<InscriptionView> {
+  final TextEditingController fullNameCodeController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +41,7 @@ class _LoginPageState extends State<LoginPage> {
             right: 0,
             child: Center(
               child: Text(
-                "Log In",
+                "Inscription",
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 32,
@@ -52,7 +57,7 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 const SizedBox(height: 300),
                 Text(
-                  "Veuillez entrer votre numéro de téléphone pour accéder à votre compte.",
+                  "Veuillez fournir vos informations d'identification pour accéder à votre compte",
                   style: TextStyle(
                     color: AppTheme.kPrimary50,
                     fontSize: 16,
@@ -60,9 +65,33 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 const Gap(42),
-                const PhoneInputField(
-                  title: "Numéro de téléphone",
+                CustomTextField(
+                  prefix: Icon(
+                    Icons.person_2_outlined,
+                    color: AppTheme.kPrimary50,
+                  ),
+                  hint: "Nom et prénom",
+                  controller: fullNameCodeController,
+                  onChanged: (_) {
+                    setState(() {});
+                  },
                 ),
+                const Gap(16),
+                CustomTextField(
+                  prefix: Icon(
+                    Icons.email_outlined,
+                    color: AppTheme.kPrimary50,
+                  ),
+                  hint: "Email",
+                  controller: emailController,
+                  onChanged: (_) {
+                    setState(() {});
+                  },
+                ),
+                const Gap(16),
+                PhoneInputField(
+                  controller: phoneController,
+                )
               ],
             ),
           ),
@@ -72,12 +101,12 @@ class _LoginPageState extends State<LoginPage> {
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
         child: CustomButton(
           isFullWidth: true,
-          text: "Se connecter",
+          isDisabled: fullNameCodeController.text.isEmpty ||
+              phoneController.text.isEmpty,
+          text: "S’inscrire",
           onPressed: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const VerificationView()));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const SuccesView()));
           },
         ),
       ),

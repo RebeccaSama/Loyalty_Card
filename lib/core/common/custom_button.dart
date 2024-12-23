@@ -34,7 +34,9 @@ class CustomButton extends StatelessWidget {
           style: TextButton.styleFrom(
               backgroundColor: transparent
                   ? null
-                  : AppTheme.kPrimaryColor.withOpacity(isDisabled ? 0.5 : 1),
+                  : isDisabled
+                      ? AppTheme.kGriserColor
+                      : AppTheme.kPrimaryColor,
               padding: const EdgeInsets.symmetric(horizontal: 16),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8))),

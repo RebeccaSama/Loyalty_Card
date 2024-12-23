@@ -75,7 +75,7 @@ class CustomTextField extends StatelessWidget {
               decoration: BoxDecoration(
                   border: Border.all(
                       width: 1,
-                      color: AppTheme.kPrimary50),
+                      color: AppTheme.kPrimaryColor.withValues(alpha: 0.12)),
                   color: AppTheme.kWhiteColor,
                   borderRadius: BorderRadius.circular(16)),
               child: TextFormField(
@@ -98,7 +98,7 @@ class CustomTextField extends StatelessWidget {
                   suffixIconConstraints: const BoxConstraints(),
                   hintText: hint,
                   hintStyle: AppTypography.kExtraLight16.copyWith(
-                    color: AppTheme.kPrimaryColor.withOpacity(0.5),
+                    color: AppTheme.kPrimaryColor.withValues(alpha: 0.24),
                   ),
                   border: InputBorder.none,
                   focusedBorder: InputBorder.none,

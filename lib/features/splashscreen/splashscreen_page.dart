@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:loyalty_card/core/theme/themes.dart';
 import 'package:loyalty_card/data/data_images.dart';
-import 'package:loyalty_card/features/onboarding/onboarding_page.dart';
+import 'package:loyalty_card/features/onboarding/onboarding.dart';
 
 class SplashscreenPage extends StatefulWidget {
   const SplashscreenPage({super.key});
@@ -28,7 +28,7 @@ class _SplashscreenPageState extends State<SplashscreenPage>
     Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const OnboardingPage()),
+        MaterialPageRoute(builder: (context) => const OnboardingView()),
       );
     });
   }

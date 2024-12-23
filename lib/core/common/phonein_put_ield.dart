@@ -31,7 +31,8 @@ class _PhoneInputFieldState extends State<PhoneInputField> {
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 3),
           decoration: BoxDecoration(
               border: Border.all(
-                  width: 1, color: AppTheme.kPrimaryColor.withOpacity(0.12)),
+                  width: 1,
+                  color: AppTheme.kPrimaryColor.withValues(alpha: 0.12)),
               color: AppTheme.kWhiteColor,
               borderRadius: BorderRadius.circular(16)),
           child: Column(
