@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:loyalty_card/features/bottom_navigation/bottom_navigation.dart';
 import 'package:loyalty_card/features/splashscreen/splashscreen_page.dart';
 
 void main() {
@@ -20,7 +19,7 @@ class MyApp extends StatelessWidget {
             backgroundColor: Colors.white, elevation: 0),
         useMaterial3: true,
       ),
-      home: const BottomNavigation(),
+      home: const SplashscreenPage(),
     );
   }
 }
