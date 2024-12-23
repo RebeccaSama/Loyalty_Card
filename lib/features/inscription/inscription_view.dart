@@ -101,8 +101,6 @@ class _InscriptionViewState extends State<InscriptionView> {
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
         child: CustomButton(
           isFullWidth: true,
-          isDisabled: fullNameCodeController.text.isEmpty ||
-              phoneController.text.isEmpty,
           text: "S’inscrire",
           onPressed: () {
             Navigator.push(context,

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:loyalty_card/core/common/row_title.dart';
 import 'package:loyalty_card/core/theme/themes.dart';
@@ -48,11 +47,30 @@ class _HomePageState extends State<HomePage> {
               actions: [
                 Image.asset('assets/images/Icons.png', height: 24, width: 24),
                 PopupMenuButton(
+                  borderRadius: const BorderRadius.only(
+                      bottomLeft: Radius.circular(20),
+                      topLeft: Radius.circular(30)),
                   splashRadius: 24,
                   itemBuilder: (context) {
                     return [
-                      const PopupMenuItem(child: Text("More")),
-                      const PopupMenuItem(child: Text("More")),
+                      const PopupMenuItem(
+                          child: Text(
+                        "Mes point",
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.w500),
+                      )),
+                      const PopupMenuItem(
+                          child: Text(
+                        "Deconnexion",
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.w500),
+                      )),
+                      const PopupMenuItem(
+                          child: Text(
+                        "Help",
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.w500),
+                      )),
                     ];
                   },
                   icon: const Icon(Icons.more_vert,
