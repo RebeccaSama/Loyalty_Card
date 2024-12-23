@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:loyalty_card/core/theme/themes.dart';
 
@@ -15,14 +16,15 @@ class CollectionProductCrossOne extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Material(
-      elevation: 4, // Ajoutez l'élévation ici
-      shadowColor: Colors.black26, // Couleur de l'ombre
-      borderRadius: BorderRadius.circular(8), // Pour arrondir les bords
+      elevation: 4,
+      shadowColor: Colors.black26,
+      borderRadius: BorderRadius.circular(8),
       child: Container(
+        padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
             color: Colors.white,
             border: Border.all(width: 1, color: AppTheme.kPrimary12),
-            borderRadius: BorderRadius.circular(8)), // Ajout des coins arrondis
+            borderRadius: BorderRadius.circular(8)),
         child: Row(
           children: [
             GestureDetector(
@@ -99,33 +101,50 @@ class CollectionProductCrossOne extends ConsumerWidget {
                       ],
                     ),
                     const SizedBox(height: 8), // Add spacing
-                    const Row(
+                    Row(
                       children: [
-                        Icon(
-                          Icons.star_half_rounded,
-                          color: Color.fromRGBO(255, 218, 68, 1),
-                          size: 15,
+                        RatingBar(
+                          initialRating: 3.5,
+                          minRating: 1,
+                          direction: Axis.horizontal,
+                          allowHalfRating: true,
+                          itemCount: 5,
+                          glow: false,
+                          itemSize: 18,
+                          ignoreGestures: true,
+                          ratingWidget: RatingWidget(
+                            full: const Icon(
+                              Icons.star,
+                              color: Color(0xffEAB704),
+                            ),
+                            half: const Icon(
+                              Icons.star_half,
+                              color: Color(0xffEAB704),
+                            ),
+                            empty: const Icon(
+                              Icons.star_border,
+                              color: Color(0xffEAB704),
+                            ),
+                          ),
+                          onRatingUpdate: (_) {},
                         ),
-                        SizedBox(width: 5.5),
-                        Text(
-                          "4.5",
+                        const SizedBox(width: 5.5),
+                        const Text(
+                          "3.5",
                           style: TextStyle(
                             color: Color.fromRGBO(0, 0, 0, 0.54),
                             fontSize: 13,
                           ),
                         ),
-                        Spacer(),
-                        Icon(
-                          Icons.remove_red_eye,
-                          color: Color.fromRGBO(0, 0, 0, 0.54),
-                          size: 12,
-                        ),
-                        SizedBox(width: 5),
-                        Text(
-                          "1234",
-                          style: TextStyle(
-                            color: Color.fromRGBO(0, 0, 0, 0.54),
-                            fontSize: 10,
+                        const Spacer(),
+                        const Padding(
+                          padding: EdgeInsets.only(right: 8),
+                          child: Text(
+                            "1000 unités",
+                            style: TextStyle(
+                              color: Color.fromRGBO(0, 0, 0, 0.54),
+                              fontSize: 10,
+                            ),
                           ),
                         ),
                       ],
