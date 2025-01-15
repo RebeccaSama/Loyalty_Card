@@ -17,40 +17,38 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Stack(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Background decoration
-          Positioned(
-            top: -90,
-            right: -70,
-            left: -70,
-            child: Image.asset(
-              "assets/images/frame.png",
-              fit: BoxFit.cover,
-              height: 300,
-            ),
-          ),
-          const Positioned(
-            top: 100,
-            left: -150,
-            right: 0,
-            child: Center(
-              child: Text(
-                "Log In",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold),
+          Stack(
+            children: [
+              Image.asset(
+                "assets/images/frame.png",
+                fit: BoxFit.cover,
+                height: 350,
               ),
-            ),
+              const Positioned(
+                top: 120,
+                left: -150,
+                right: 0,
+                child: Center(
+                  child: Text(
+                    "Log In",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 32,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+              )
+            ],
           ),
-          // Main content
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: 300),
+                const SizedBox(height: 66),
                 Text(
                   "Veuillez entrer votre numéro de téléphone pour accéder à votre compte.",
                   style: TextStyle(
@@ -65,7 +63,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ],
             ),
-          ),
+          )
         ],
       ),
       bottomSheet: Padding(

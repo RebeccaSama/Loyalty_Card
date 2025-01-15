@@ -32,6 +32,13 @@ dependencies:
   qr_code_scanner: ^1.0.1
   permission_handler: ^11.3.1
   settings_ui: ^2.0.2
+  avatar_glow: ^3.0.1
+  flutter_blurhash: ^0.8.2
+  simple_animations: ^5.1.0
+  tuple: ^2.0.2
+  cached_network_image: ^3.4.1
+  icons_plus: ^5.0.0
+  syncfusion_flutter_gauges: ^28.1.39
 
 dev_dependencies:
   flutter_test:

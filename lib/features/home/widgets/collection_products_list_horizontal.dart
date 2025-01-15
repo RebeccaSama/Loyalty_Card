@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:loyalty_card/core/theme/themes.dart';
 import 'package:loyalty_card/data/data_images.dart';
+import 'package:loyalty_card/features/product_details/views/product_details_view.dart';
 
 class CollectionProductsHorizontal extends ConsumerWidget {
   const CollectionProductsHorizontal({
@@ -22,7 +23,13 @@ class CollectionProductsHorizontal extends ConsumerWidget {
                 (index) => Padding(
                     padding: EdgeInsets.only(right: index == 10 ? 0 : 8),
                     child: GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const ProductDetailsView()));
+                      },
                       child: Container(
                           width: 150,
                           padding: const EdgeInsets.all(6),
@@ -41,9 +48,18 @@ class CollectionProductsHorizontal extends ConsumerWidget {
                                 width: double.infinity,
                                 height: 120,
                                 decoration: BoxDecoration(
-                                    color: const Color(0x1304544D),
-                                    borderRadius: BorderRadius.circular(8)),
-                                child: Image.asset(DataImages.product),
+                                  color: const Color(0x1304544D),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(8),
+                                  child: Image.asset(
+                                    DataImages.product,
+                                    fit: BoxFit.cover,
+                                    height: 120,
+                                    width: double.infinity,
+                                  ),
+                                ),
                               ),
                               Padding(
                                 padding:

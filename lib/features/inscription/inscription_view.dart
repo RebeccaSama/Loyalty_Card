@@ -22,80 +22,80 @@ class _InscriptionViewState extends State<InscriptionView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Stack(
-        children: [
-          // Background decoration
-          Positioned(
-            top: -90,
-            right: -70,
-            left: -70,
-            child: Image.asset(
-              "assets/images/frame.png",
-              fit: BoxFit.cover,
-              height: 300,
-            ),
-          ),
-          const Positioned(
-            top: 100,
-            left: -150,
-            right: 0,
-            child: Center(
-              child: Text(
-                "Inscription",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold),
-              ),
-            ),
-          ),
-          // Main content
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Stack(
               children: [
-                const SizedBox(height: 300),
-                Text(
-                  "Veuillez fournir vos informations d'identification pour accéder à votre compte",
-                  style: TextStyle(
-                    color: AppTheme.kPrimary50,
-                    fontSize: 16,
-                    fontWeight: FontWeight.normal,
-                  ),
+                Image.asset(
+                  "assets/images/frame.png",
+                  fit: BoxFit.cover,
+                  height: 350,
                 ),
-                const Gap(42),
-                CustomTextField(
-                  prefix: Icon(
-                    Icons.person_2_outlined,
-                    color: AppTheme.kPrimary50,
+                const Positioned(
+                  top: 120,
+                  left: -80,
+                  right: 0,
+                  child: Center(
+                    child: Text(
+                      "Inscription",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 32,
+                          fontWeight: FontWeight.bold),
+                    ),
                   ),
-                  hint: "Nom et prénom",
-                  controller: fullNameCodeController,
-                  onChanged: (_) {
-                    setState(() {});
-                  },
-                ),
-                const Gap(16),
-                CustomTextField(
-                  prefix: Icon(
-                    Icons.email_outlined,
-                    color: AppTheme.kPrimary50,
-                  ),
-                  hint: "Email",
-                  controller: emailController,
-                  onChanged: (_) {
-                    setState(() {});
-                  },
-                ),
-                const Gap(16),
-                PhoneInputField(
-                  controller: phoneController,
                 )
               ],
             ),
-          ),
-        ],
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 66),
+                  Text(
+                    "Veuillez fournir vos informations d'identification pour accéder à votre compte",
+                    style: TextStyle(
+                      color: AppTheme.kPrimary50,
+                      fontSize: 16,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                  const Gap(42),
+                  CustomTextField(
+                    prefix: Icon(
+                      Icons.person_2_outlined,
+                      color: AppTheme.kPrimary50,
+                    ),
+                    hint: "Nom et prénom",
+                    controller: fullNameCodeController,
+                    onChanged: (_) {
+                      setState(() {});
+                    },
+                  ),
+                  const Gap(16),
+                  CustomTextField(
+                    prefix: Icon(
+                      Icons.email_outlined,
+                      color: AppTheme.kPrimary50,
+                    ),
+                    hint: "Email",
+                    controller: emailController,
+                    onChanged: (_) {
+                      setState(() {});
+                    },
+                  ),
+                  const Gap(16),
+                  PhoneInputField(
+                    controller: phoneController,
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
       ),
       bottomSheet: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),

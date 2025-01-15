@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:loyalty_card/core/theme/themes.dart';
+import 'package:loyalty_card/features/points_page/points_page.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
@@ -136,7 +137,12 @@ class _QRViewState extends State<QRViewState> {
                 decoration: const BoxDecoration(
                     shape: BoxShape.circle, color: AppTheme.kboutonscan30),
                 child: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const PointsPage()));
+                  },
                   icon: const Icon(
                     Icons.edit,
                     color: AppTheme.kWhiteColor,
