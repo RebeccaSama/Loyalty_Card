@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:loyalty_card/core/common/row_title.dart';
 import 'package:loyalty_card/core/theme/themes.dart';
-import 'package:loyalty_card/data/data_images.dart';
+import 'package:loyalty_card/features/historique/historique_view.dart';
 import 'package:loyalty_card/features/home/widgets/collection_products_list_horizontal.dart';
 import 'package:loyalty_card/features/home/widgets/home_header_main.dart';
 import 'package:loyalty_card/features/home/widgets/store_widget.dart';
+import 'package:loyalty_card/features/login/login_page.dart';
 import 'package:loyalty_card/features/notification/notification_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -40,12 +41,31 @@ class _HomePageState extends State<HomePage> {
                       size: 25,
                     ),
                   )),
-              title: Image.asset(
-                DataImages.logo,
-                height: 60,
-                width: 76,
-                fit: BoxFit.contain,
+              title: RichText(
+                textAlign: TextAlign.center,
+                text: const TextSpan(
+                    text: 'CERAMIC ',
+                    style: TextStyle(
+                        fontFamily: "Dosis",
+                        fontSize: 15,
+                        color: AppTheme.kWhiteColor,
+                        fontWeight: FontWeight.w800),
+                    children: <TextSpan>[
+                      TextSpan(
+                          text: 'GIFT',
+                          style: TextStyle(
+                              fontFamily: "Dosis",
+                              fontSize: 15,
+                              color: AppTheme.kYellowColor  ,
+                              fontWeight: FontWeight.w800)),
+                    ]),
               ),
+              // title: Image.asset(
+              //   DataImages.logo,
+              //   height: 60,
+              //   width: 76,
+              //   fit: BoxFit.contain,
+              // ),
               actions: [
                 GestureDetector(
                     onTap: () {
@@ -63,23 +83,66 @@ class _HomePageState extends State<HomePage> {
                   splashRadius: 24,
                   itemBuilder: (context) {
                     return [
+                      PopupMenuItem(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const HistoriqueView()));
+                          },
+                          child: const Row(
+                            children: [
+                              Icon(
+                                Icons.shopping_cart,
+                                size: 24,
+                                color: AppTheme.kPrimaryColor,
+                              ),
+                              Gap(8),
+                              Text(
+                                "Mes points",
+                                style: TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.w500),
+                              ),
+                            ],
+                          )),
+                      PopupMenuItem(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const LoginPage()));
+                          },
+                          child: const Row(
+                            children: [
+                              Icon(
+                                Icons.logout,
+                                size: 24,
+                                color: Colors.red,
+                              ),
+                              Gap(8),
+                              Text(
+                                "Deconnexion",
+                                style: TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.w500),
+                              ),
+                            ],
+                          )),
                       const PopupMenuItem(
-                          child: Text(
-                        "Mes point",
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w500),
-                      )),
-                      const PopupMenuItem(
-                          child: Text(
-                        "Deconnexion",
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w500),
-                      )),
-                      const PopupMenuItem(
-                          child: Text(
-                        "Help",
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w500),
+                          child: Row(
+                        children: [
+                          Icon(
+                            Icons.help,
+                            size: 24,
+                            color: AppTheme.kPercentageRed,
+                          ),
+                          Gap(8),
+                          Text(
+                            "Help",
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.w500),
+                          ),
+                        ],
                       )),
                     ];
                   },

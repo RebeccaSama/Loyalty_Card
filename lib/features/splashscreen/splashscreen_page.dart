@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:loyalty_card/core/theme/themes.dart';
-import 'package:loyalty_card/data/data_images.dart';
 import 'package:loyalty_card/features/onboarding/onboarding.dart';
 
 class SplashscreenPage extends StatefulWidget {
@@ -14,6 +13,7 @@ class SplashscreenPage extends StatefulWidget {
 class _SplashscreenPageState extends State<SplashscreenPage>
     with TickerProviderStateMixin {
   late AnimationController _controller;
+  late Animation<double> _opacityTween;
 
   @override
   void initState() {
@@ -23,6 +23,8 @@ class _SplashscreenPageState extends State<SplashscreenPage>
       vsync: this,
       duration: const Duration(seconds: 3),
     );
+
+    _opacityTween = Tween<double>(begin: 0.0, end: 2.0).animate(_controller);
 
     _controller.forward();
     Future.delayed(const Duration(seconds: 3), () {
@@ -41,7 +43,31 @@ class _SplashscreenPageState extends State<SplashscreenPage>
         body: Stack(
           alignment: Alignment.center,
           children: [
-            Center(child: Image.asset(DataImages.logo)),
+            // Center(child: Image.asset(DataImages.logo)),
+            Center(
+              child: FadeTransition(
+                opacity: _opacityTween,
+                child: RichText(
+                  textAlign: TextAlign.center,
+                  text: const TextSpan(
+                      text: 'LOYALTY',
+                      style: TextStyle(
+                          fontFamily: "Dosis",
+                          fontSize: 30,
+                          color: AppTheme.kWhiteColor,
+                          fontWeight: FontWeight.w800),
+                      children: <TextSpan>[
+                        TextSpan(
+                            text: 'CARD',
+                            style: TextStyle(
+                                fontFamily: "Dosis",
+                                fontSize: 30,
+                                color: AppTheme.kYellowColor,
+                                fontWeight: FontWeight.w800)),
+                      ]),
+                ),
+              ),
+            ),
             const Positioned(
               bottom: 110,
               child: CircularProgressIndicator(

@@ -66,7 +66,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
             selectedIcon: const Icon(Icons.credit_card),
             selectedColor: AppTheme.kPrimaryColor,
             title: const Text(
-              "Historique",
+              "Mes avoirs",
               style: TextStyle(
                 fontFamily: "Dosis",
                 fontSize: 12,

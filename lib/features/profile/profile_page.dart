@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:loyalty_card/features/historique/historique_view.dart';
+import 'package:loyalty_card/features/login/login_page.dart';
+import 'package:loyalty_card/features/notification/notification_page.dart';
 import 'package:loyalty_card/features/profile/widgets/profil_header.dart';
 import 'package:loyalty_card/features/profile/widgets/profil_item.dart';
 
@@ -29,7 +32,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 subTitle: "Modifier et gérer les détails de votre compte",
               ),
               const SizedBox(height: 20),
-              const ProfilHeader(),
+            const ProfilHeader(),
               const SizedBox(height: 8),
               const ProfilItem(
                 iconData: Iconsax.category_2_outline,
@@ -42,7 +45,12 @@ class _ProfilePageState extends State<ProfilePage> {
                 iconData: Iconsax.notification_outline,
                 title: 'Notifications',
                 color: Colors.green,
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const NotificationPage()));
+                },
               ),
               const SizedBox(height: 16),
               ProfitItem(
@@ -56,7 +64,12 @@ class _ProfilePageState extends State<ProfilePage> {
                 iconData: Iconsax.shop_outline,
                 title: 'Mes points',
                 color: Colors.purple,
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const HistoriqueView()));
+                },
               ),
               const SizedBox(height: 16),
               ProfitItem(
@@ -70,7 +83,12 @@ class _ProfilePageState extends State<ProfilePage> {
                 iconData: Iconsax.logout_outline,
                 title: 'Déconexion',
                 color: Colors.red,
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const LoginPage()));
+                },
               ),
             ],
           ),

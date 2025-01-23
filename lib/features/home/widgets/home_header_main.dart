@@ -29,7 +29,7 @@ class _HomeHeaderMainState extends ConsumerState<HomeHeaderMain> {
             const Padding(
               padding: EdgeInsets.only(left: 32),
               child: Text(
-                "Hello Sama,",
+                "Hello Loyalty Card,",
                 style: TextStyle(
                     color: AppTheme.kWhiteColor,
                     fontSize: 24,
