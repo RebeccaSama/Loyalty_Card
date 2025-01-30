@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
-import 'package:loyalty_card/features/historique/historique_view.dart';
 import 'package:loyalty_card/features/login/login_page.dart';
+import 'package:loyalty_card/features/my_assets/my_assets_page.dart';
 import 'package:loyalty_card/features/notification/notification_page.dart';
+import 'package:loyalty_card/features/points_page/points_page.dart';
 import 'package:loyalty_card/features/profile/widgets/profil_header.dart';
 import 'package:loyalty_card/features/profile/widgets/profil_item.dart';
 
@@ -32,7 +33,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 subTitle: "Modifier et gérer les détails de votre compte",
               ),
               const SizedBox(height: 20),
-            const ProfilHeader(),
+              const ProfilHeader(),
               const SizedBox(height: 8),
               const ProfilItem(
                 iconData: Iconsax.category_2_outline,
@@ -61,6 +62,18 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
               const SizedBox(height: 16),
               ProfitItem(
+                iconData: Iconsax.money_recive_outline,
+                title: 'Mes avoirs',
+                color: Colors.blue,
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const MyAssetsPage()));
+                },
+              ),
+              const SizedBox(height: 16),
+              ProfitItem(
                 iconData: Iconsax.shop_outline,
                 title: 'Mes points',
                 color: Colors.purple,
@@ -68,7 +81,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const HistoriqueView()));
+                          builder: (context) => const PointsPage()));
                 },
               ),
               const SizedBox(height: 16),
@@ -84,7 +97,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 title: 'Déconexion',
                 color: Colors.red,
                 onTap: () {
-                  Navigator.push(
+                  Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
                           builder: (context) => const LoginPage()));
