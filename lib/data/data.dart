@@ -5,7 +5,7 @@ class OnboardingItems {
   final List<Onboarding> items = [
     Onboarding(
       image: DataImages.onboarding1,
-      title: 'Fidelisation du client ',
+      title: 'Fidélisation du client ',
       subtitle:
           'A pour but de maintenir une relation durable avec vos clients en instaurant un climat de confiance.',
     ),
@@ -23,7 +23,7 @@ class OnboardingItems {
     ),
     Onboarding(
         image: DataImages.onboarding4,
-        title: 'Bienvenue chez ARNO',
+        title: 'Bienvenue chez LOYALTY CARDS',
         subtitle:
             "Notre objectif est de renforcer la relation client, stimuler l'engagement, améliorer l'expérience client et accroître la fidélité à long terme.  ")
   ];

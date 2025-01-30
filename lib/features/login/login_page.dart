@@ -17,54 +17,56 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Stack(
-            children: [
-              Image.asset(
-                "assets/images/frame.png",
-                fit: BoxFit.cover,
-                height: 350,
-              ),
-              const Positioned(
-                top: 120,
-                left: -150,
-                right: 0,
-                child: Center(
-                  child: Text(
-                    "Log In",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 32,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ),
-              )
-            ],
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Stack(
               children: [
-                const SizedBox(height: 66),
-                Text(
-                  "Veuillez entrer votre numéro de téléphone pour accéder à votre compte.",
-                  style: TextStyle(
-                    color: AppTheme.kPrimary50,
-                    fontSize: 16,
-                    fontWeight: FontWeight.normal,
+                Image.asset(
+                  "assets/images/frame.png",
+                  fit: BoxFit.cover,
+                  height: 350,
+                ),
+                const Positioned(
+                  top: 120,
+                  left: -150,
+                  right: 0,
+                  child: Center(
+                    child: Text(
+                      "Log In",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 32,
+                          fontWeight: FontWeight.bold),
+                    ),
                   ),
-                ),
-                const Gap(42),
-                const PhoneInputField(
-                  title: "Numéro de téléphone",
-                ),
+                )
               ],
             ),
-          )
-        ],
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 66),
+                  Text(
+                    "Veuillez entrer votre numéro de téléphone pour accéder à votre compte.",
+                    style: TextStyle(
+                      color: AppTheme.kPrimary50,
+                      fontSize: 16,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                  const Gap(42),
+                  const PhoneInputField(
+                    title: "Numéro de téléphone",
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
       bottomSheet: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),

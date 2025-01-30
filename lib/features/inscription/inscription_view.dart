@@ -90,22 +90,25 @@ class _InscriptionViewState extends State<InscriptionView> {
                   const Gap(16),
                   PhoneInputField(
                     controller: phoneController,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 24, vertical: 32),
+                    child: CustomButton(
+                      isFullWidth: true,
+                      text: "S’inscrire",
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SuccesView()));
+                      },
+                    ),
                   )
                 ],
               ),
             )
           ],
-        ),
-      ),
-      bottomSheet: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-        child: CustomButton(
-          isFullWidth: true,
-          text: "S’inscrire",
-          onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const SuccesView()));
-          },
         ),
       ),
     );

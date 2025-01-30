@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:icons_plus/icons_plus.dart';
 import 'package:loyalty_card/core/common/row_title.dart';
 import 'package:loyalty_card/core/theme/themes.dart';
-import 'package:loyalty_card/features/historique/historique_view.dart';
 import 'package:loyalty_card/features/home/widgets/collection_products_list_horizontal.dart';
 import 'package:loyalty_card/features/home/widgets/home_header_main.dart';
 import 'package:loyalty_card/features/home/widgets/store_widget.dart';
 import 'package:loyalty_card/features/login/login_page.dart';
+import 'package:loyalty_card/features/my_assets/my_assets_page.dart';
 import 'package:loyalty_card/features/notification/notification_page.dart';
+import 'package:loyalty_card/features/points_page/points_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -44,7 +46,7 @@ class _HomePageState extends State<HomePage> {
               title: RichText(
                 textAlign: TextAlign.center,
                 text: const TextSpan(
-                    text: 'CERAMIC ',
+                    text: 'LOYALTY ',
                     style: TextStyle(
                         fontFamily: "Dosis",
                         fontSize: 15,
@@ -52,11 +54,11 @@ class _HomePageState extends State<HomePage> {
                         fontWeight: FontWeight.w800),
                     children: <TextSpan>[
                       TextSpan(
-                          text: 'GIFT',
+                          text: 'CARD',
                           style: TextStyle(
                               fontFamily: "Dosis",
                               fontSize: 15,
-                              color: AppTheme.kYellowColor  ,
+                              color: AppTheme.kRedColor,
                               fontWeight: FontWeight.w800)),
                     ]),
               ),
@@ -80,6 +82,7 @@ class _HomePageState extends State<HomePage> {
                   borderRadius: const BorderRadius.only(
                       bottomLeft: Radius.circular(20),
                       topLeft: Radius.circular(30)),
+                  color: Colors.white,
                   splashRadius: 24,
                   itemBuilder: (context) {
                     return [
@@ -89,12 +92,34 @@ class _HomePageState extends State<HomePage> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        const HistoriqueView()));
+                                        const MyAssetsPage()));
                           },
                           child: const Row(
                             children: [
                               Icon(
-                                Icons.shopping_cart,
+                                Iconsax.money_recive_outline,
+                                size: 24,
+                                color: AppTheme.kPrimaryColor,
+                              ),
+                              Gap(8),
+                              Text(
+                                "Mes avoirs",
+                                style: TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.w500),
+                              ),
+                            ],
+                          )),
+                      PopupMenuItem(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const PointsPage()));
+                          },
+                          child: const Row(
+                            children: [
+                              Icon(
+                                Icons.shopping_cart_outlined,
                                 size: 24,
                                 color: AppTheme.kPrimaryColor,
                               ),
@@ -108,7 +133,7 @@ class _HomePageState extends State<HomePage> {
                           )),
                       PopupMenuItem(
                           onTap: () {
-                            Navigator.push(
+                            Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => const LoginPage()));
@@ -116,7 +141,7 @@ class _HomePageState extends State<HomePage> {
                           child: const Row(
                             children: [
                               Icon(
-                                Icons.logout,
+                                Iconsax.logout_outline,
                                 size: 24,
                                 color: Colors.red,
                               ),

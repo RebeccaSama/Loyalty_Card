@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:icons_plus/icons_plus.dart';
 import 'package:loyalty_card/core/theme/themes.dart';
 import 'package:loyalty_card/features/catalogue/catalogue_view.dart';
-import 'package:loyalty_card/features/historique/historique_view.dart';
 import 'package:loyalty_card/features/home/home_page.dart';
+import 'package:loyalty_card/features/my_assets/my_assets_page.dart';
 import 'package:loyalty_card/features/profile/profile_page.dart';
 import 'package:loyalty_card/features/qr_code/qr_code_page.dart';
 import 'package:stylish_bottom_bar/stylish_bottom_bar.dart';
@@ -15,7 +16,7 @@ class BottomNavigation extends StatefulWidget {
 }
 
 class _BottomNavigationState extends State<BottomNavigation> {
-  int selectedIndex = 0; // Tracks the selected tab index
+  int selectedIndex = 0;
   final PageController _controller = PageController();
 
   @override
@@ -34,8 +35,8 @@ class _BottomNavigationState extends State<BottomNavigation> {
         ),
         items: [
           BottomBarItem(
-            icon: const Icon(Icons.home_outlined),
-            selectedIcon: const Icon(Icons.home_rounded),
+            icon: const Icon(Iconsax.home_outline),
+            selectedIcon: const Icon(Iconsax.home_outline),
             selectedColor: AppTheme.kPrimaryColor,
             title: const Text(
               "Accueil",
@@ -48,8 +49,8 @@ class _BottomNavigationState extends State<BottomNavigation> {
             ),
           ),
           BottomBarItem(
-            icon: const Icon(Icons.grid_view_outlined),
-            selectedIcon: const Icon(Icons.grid_view),
+            icon: const Icon(Iconsax.element_3_outline),
+            selectedIcon: const Icon(Iconsax.element_3_outline),
             selectedColor: AppTheme.kPrimaryColor,
             title: const Text(
               'Catalogue',
@@ -62,8 +63,8 @@ class _BottomNavigationState extends State<BottomNavigation> {
             ),
           ),
           BottomBarItem(
-            icon: const Icon(Icons.credit_card_outlined),
-            selectedIcon: const Icon(Icons.credit_card),
+            icon: const Icon(Iconsax.money_recive_outline),
+            selectedIcon: const Icon(Iconsax.money_recive_outline),
             selectedColor: AppTheme.kPrimaryColor,
             title: const Text(
               "Mes avoirs",
@@ -76,8 +77,8 @@ class _BottomNavigationState extends State<BottomNavigation> {
             ),
           ),
           BottomBarItem(
-            icon: const Icon(Icons.person_outline),
-            selectedIcon: const Icon(Icons.person),
+            icon: const Icon(Iconsax.user_outline),
+            selectedIcon: const Icon(Iconsax.user_outline),
             selectedColor: AppTheme.kPrimaryColor,
             title: const Text(
               'Profile',
@@ -109,7 +110,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => const QRViewState()));
         },
-        child: const Icon(Icons.qr_code, color: Colors.white),
+        child: const Icon(Iconsax.scan_outline, color: Colors.white),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: SafeArea(
@@ -123,7 +124,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
           children: const [
             HomePage(), // Replace with your respective pages
             CatalogueView(),
-            HistoriqueView(),
+            MyAssetsPage(),
             ProfilePage(),
           ],
         ),
