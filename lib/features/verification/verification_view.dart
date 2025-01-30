@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:loyalty_card/core/theme/themes.dart';
-import 'package:loyalty_card/features/inscription/Inscription_view.dart';
+import 'package:loyalty_card/features/inscription/inscription_view.dart';
 import 'package:pinput/pinput.dart';
 
 class VerificationView extends StatefulWidget {
