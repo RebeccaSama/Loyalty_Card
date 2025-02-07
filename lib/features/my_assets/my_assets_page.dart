@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
-import 'package:loyalty_card/core/common/app_typography.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:loyalty_card/core/theme/themes.dart';
 
 class MyAssetsPage extends StatefulWidget {
   const MyAssetsPage({super.key});
@@ -15,28 +15,33 @@ class _MyAssetsPageState extends State<MyAssetsPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        leading: Align(
-          alignment: Alignment.center,
-          child: PlatformIconButton(
+        backgroundColor: Colors.white,
+        leading: IconButton(
             onPressed: () {
               Navigator.pop(context);
             },
-            padding: EdgeInsets.zero,
             icon: const Icon(
-              Icons.arrow_back_ios_sharp,
-              size: 24,
+              Icons.arrow_back,
               color: Colors.black,
-            ),
-            material: (_, __) => MaterialIconButtonData(
-                splashRadius: 20, constraints: const BoxConstraints()),
-            cupertino: (_, __) => CupertinoIconButtonData(minSize: 0),
+            )),
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                "A Propos",
+                textAlign: TextAlign.center,
+                style: GoogleFonts.dosis(
+                    fontSize: 30,
+                    fontWeight: FontWeight.w700,
+                    color: AppTheme.kPrimaryColor),
+              ),
+            ],
           ),
         ),
-        backgroundColor: Colors.white,
-        centerTitle: true,
-        title: Text("Mes avoirs",
-            style: AppTypography.kBold24
-                .copyWith(fontSize: 24, color: Colors.black)),
       ),
     );
   }
