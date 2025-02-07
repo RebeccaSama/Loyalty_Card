@@ -81,7 +81,6 @@ class _MyCurrencyState extends State<MyCurrency> {
               ),
               const Gap(24),
               CustomButton(
-                isFullWidth: true,
                 text: "Get it",
                 onPressed: () {},
               )
