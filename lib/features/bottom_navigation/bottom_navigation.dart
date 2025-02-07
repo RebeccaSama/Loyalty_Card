@@ -3,7 +3,7 @@ import 'package:icons_plus/icons_plus.dart';
 import 'package:loyalty_card/core/theme/themes.dart';
 import 'package:loyalty_card/features/catalogue/catalogue_view.dart';
 import 'package:loyalty_card/features/home/home_page.dart';
-import 'package:loyalty_card/features/my_assets/my_assets_page.dart';
+import 'package:loyalty_card/features/my_currency/my_currency.dart';
 import 'package:loyalty_card/features/profile/profile_page.dart';
 import 'package:loyalty_card/features/qr_code/qr_code_page.dart';
 import 'package:stylish_bottom_bar/stylish_bottom_bar.dart';
@@ -67,7 +67,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
             selectedIcon: const Icon(Iconsax.money_recive_outline),
             selectedColor: AppTheme.kPrimaryColor,
             title: const Text(
-              "Mes avoirs",
+              "Ma Monnaie",
               style: TextStyle(
                 fontFamily: "Dosis",
                 fontSize: 12,
@@ -124,7 +124,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
           children: const [
             HomePage(), // Replace with your respective pages
             CatalogueView(),
-            MyAssetsPage(),
+            MyCurrency(),
             ProfilePage(),
           ],
         ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:loyalty_card/features/login/login_page.dart';
-import 'package:loyalty_card/features/my_assets/my_assets_page.dart';
+import 'package:loyalty_card/features/my_currency/my_currency.dart';
 import 'package:loyalty_card/features/notification/notification_page.dart';
 import 'package:loyalty_card/features/points_page/points_page.dart';
 import 'package:loyalty_card/features/profile/widgets/profil_header.dart';
@@ -63,13 +63,13 @@ class _ProfilePageState extends State<ProfilePage> {
               const SizedBox(height: 16),
               ProfitItem(
                 iconData: Iconsax.money_recive_outline,
-                title: 'Mes avoirs',
+                title: 'Ma Monnaie',
                 color: Colors.blue,
                 onTap: () {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const MyAssetsPage()));
+                          builder: (context) => const MyCurrency()));
                 },
               ),
               const SizedBox(height: 16),

@@ -7,7 +7,7 @@ import 'package:loyalty_card/features/home/widgets/collection_products_list_hori
 import 'package:loyalty_card/features/home/widgets/home_header_main.dart';
 import 'package:loyalty_card/features/home/widgets/store_widget.dart';
 import 'package:loyalty_card/features/login/login_page.dart';
-import 'package:loyalty_card/features/my_assets/my_assets_page.dart';
+import 'package:loyalty_card/features/my_currency/my_currency.dart';
 import 'package:loyalty_card/features/notification/notification_page.dart';
 import 'package:loyalty_card/features/points_page/points_page.dart';
 
@@ -92,7 +92,7 @@ class _HomePageState extends State<HomePage> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        const MyAssetsPage()));
+                                        const MyCurrency()));
                           },
                           child: const Row(
                             children: [
@@ -103,7 +103,7 @@ class _HomePageState extends State<HomePage> {
                               ),
                               Gap(8),
                               Text(
-                                "Mes avoirs",
+                                "Ma Monnaie",
                                 style: TextStyle(
                                     fontSize: 18, fontWeight: FontWeight.w500),
                               ),
