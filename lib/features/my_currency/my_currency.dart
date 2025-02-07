@@ -77,7 +77,7 @@ class _MyCurrencyState extends State<MyCurrency> {
                 style: GoogleFonts.dosis(
                     fontSize: 20,
                     fontWeight: FontWeight.w400,
-                    color: AppTheme.kPrimaryColor),
+                    color: AppTheme.kPrimary50),
               ),
               const Gap(24),
               CustomButton(
