@@ -31,11 +31,11 @@ class _InscriptionViewState extends State<InscriptionView> {
                 Image.asset(
                   "assets/images/frame.png",
                   fit: BoxFit.cover,
-                  height: 350,
+                  height: 250,
                 ),
                 const Positioned(
-                  top: 120,
-                  left: -80,
+                  top: 80,
+                  left: -60,
                   right: 0,
                   child: Center(
                     child: Text(
@@ -54,16 +54,16 @@ class _InscriptionViewState extends State<InscriptionView> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: 66),
+                  const SizedBox(height: 56),
                   Text(
-                    "Veuillez fournir vos informations d'identification pour accéder à votre compte",
+                    "Veuillez saisir vos identifiants pour vous inscrire",
                     style: TextStyle(
                       color: AppTheme.kPrimary50,
                       fontSize: 16,
                       fontWeight: FontWeight.normal,
                     ),
                   ),
-                  const Gap(42),
+                  const Gap(32),
                   CustomTextField(
                     prefix: Icon(
                       Icons.person_2_outlined,
@@ -92,8 +92,7 @@ class _InscriptionViewState extends State<InscriptionView> {
                     controller: phoneController,
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 24, vertical: 32),
+                    padding: const EdgeInsets.symmetric( vertical: 32),
                     child: CustomButton(
                       isFullWidth: true,
                       text: "S’inscrire",

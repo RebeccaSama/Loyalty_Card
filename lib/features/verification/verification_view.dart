@@ -32,18 +32,18 @@ class _VerificationViewState extends State<VerificationView> {
                 Image.asset(
                   "assets/images/frame.png",
                   fit: BoxFit.cover,
-                  height: 350,
+                  height: 250,
                 ),
                 const Positioned(
-                  top: 120,
-                  left: -80,
+                  top: 80,
+                  left: -60,
                   right: 0,
                   child: Center(
                     child: Text(
                       "Vérification",
                       style: TextStyle(
                           color: Colors.white,
-                          fontSize: 32,
+                          fontSize: 30,
                           fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -55,7 +55,7 @@ class _VerificationViewState extends State<VerificationView> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const SizedBox(height: 66),
+                  const SizedBox(height: 56),
                   RichText(
                     text: TextSpan(
                       text: 'Veuillez saisir le code OTP envoyé au ',
@@ -73,7 +73,7 @@ class _VerificationViewState extends State<VerificationView> {
                       ],
                     ),
                   ),
-                  const Gap(50),
+                  const Gap(40),
                   Pinput(
                     controller: pinkCodeController,
                     autofocus: true,
@@ -193,7 +193,7 @@ class _VerificationViewState extends State<VerificationView> {
                       });
                     },
                   ),
-                  const Gap(50),
+                  const Gap(40),
                   Column(
                     children: [
                       const Text(
@@ -220,7 +220,7 @@ class _VerificationViewState extends State<VerificationView> {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 50),
+                  const SizedBox(height: 40),
                   if (showLoader && !showSuccess)
                     Container(
                       width: 60,

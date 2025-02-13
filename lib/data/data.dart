@@ -7,13 +7,13 @@ class OnboardingItems {
       image: DataImages.onboarding1,
       title: 'Fidélisation du client ',
       subtitle:
-          'A pour but de maintenir une relation durable avec vos clients en instaurant un climat de confiance.',
+          "Profitez d'une relation de confiance durable et soyez récompensé pour votre fidélité !",
     ),
     Onboarding(
       image: DataImages.onboarding2,
       title: 'Gain de points',
       subtitle:
-          "Plus vous achetez d'articles, plus vous gagnez de points, lesquels vous permettront d'obtenir une récompense.",
+          "Accumulez des points à chaque achat et transformez-les en récompenses exclusives !",
     ),
     Onboarding(
       image: DataImages.onboarding3,
@@ -25,6 +25,6 @@ class OnboardingItems {
         image: DataImages.onboarding4,
         title: 'Bienvenue chez LOYALTY CARDS',
         subtitle:
-            "Notre objectif est de renforcer la relation client, stimuler l'engagement, améliorer l'expérience client et accroître la fidélité à long terme.  ")
+            "Nous optimisons votre expérience, boostons l’engagement et assurons une fidélité durable.")
   ];
 }

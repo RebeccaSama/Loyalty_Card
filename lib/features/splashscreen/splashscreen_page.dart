@@ -50,9 +50,9 @@ class _SplashscreenPageState extends State<SplashscreenPage>
                 child: RichText(
                   textAlign: TextAlign.center,
                   text: const TextSpan(
-                      text: 'LOYALTY ',
+                      text: 'L',
                       style: TextStyle(
-                          fontFamily: "Dosis",
+                          fontFamily: "Poppins",
                           fontSize: 30,
                           color: AppTheme.kWhiteColor,
                           fontWeight: FontWeight.w800),
@@ -60,7 +60,7 @@ class _SplashscreenPageState extends State<SplashscreenPage>
                         TextSpan(
                             text: 'CARD',
                             style: TextStyle(
-                                fontFamily: "Dosis",
+                                fontFamily: "Poppins",
                                 fontSize: 30,
                                 color: AppTheme.kRedColor,
                                 fontWeight: FontWeight.w800)),

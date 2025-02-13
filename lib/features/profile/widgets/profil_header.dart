@@ -16,7 +16,7 @@ class ProfilHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Tuple2> items = [
       const Tuple2(Icons.phone, "+237 674053983"),
-      const Tuple2(Icons.email_outlined, "nguefforebecca@gmail.com")
+      const Tuple2(Icons.email_outlined, "samarebecca@gmail.com")
     ];
     return Stack(
       children: [

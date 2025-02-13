@@ -38,7 +38,7 @@ class _SuccesViewState extends State<SuccesView> {
             SvgPicture.asset(
               DataImages.success,
             ),
-            const Gap(86),
+            const Gap(56),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 172),
               child: Container(
@@ -47,7 +47,7 @@ class _SuccesViewState extends State<SuccesView> {
                 color: AppTheme.kPrimaryColor,
               ),
             ),
-            const Gap(24),
+            const Gap(16),
             const Text(
               "Succès !",
               textAlign: TextAlign.center,
@@ -58,7 +58,7 @@ class _SuccesViewState extends State<SuccesView> {
                 letterSpacing: -0.02,
               ),
             ),
-            const Gap(26),
+            const Gap(16),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 16),
               child: Text(
@@ -70,7 +70,7 @@ class _SuccesViewState extends State<SuccesView> {
                       fontSize: 17),
                   textAlign: TextAlign.center),
             ),
-            const Gap(92),
+            const Gap(56),
             Container(
               width: 60,
               height: 60,

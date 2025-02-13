@@ -50,7 +50,7 @@ class _MyCurrencyState extends State<MyCurrency> {
                     color: AppTheme.kPrimary50),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 50),
+                padding: const EdgeInsets.symmetric(vertical: 45),
                 child: Image.asset("assets/images/my_currency.png"),
               ),
               RichText(

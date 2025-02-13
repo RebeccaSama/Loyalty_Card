@@ -12,4 +12,5 @@ class AppTheme {
   static const kPercentageRed = Color(0xffF85A44);
   static const kYellowColor = Color(0xFFEAB704);
   static const kboutonscan30 = Color.fromRGBO(217, 217, 217, 0.25);
+  static const kAgentColor = Color(0xffFFD700);
 }

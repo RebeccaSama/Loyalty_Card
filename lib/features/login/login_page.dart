@@ -26,11 +26,11 @@ class _LoginPageState extends State<LoginPage> {
                 Image.asset(
                   "assets/images/frame.png",
                   fit: BoxFit.cover,
-                  height: 350,
+                  height: 250,
                 ),
                 const Positioned(
-                  top: 120,
-                  left: -150,
+                  top: 80,
+                  left: -100,
                   right: 0,
                   child: Center(
                     child: Text(
@@ -49,7 +49,7 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: 66),
+                  const SizedBox(height: 56),
                   Text(
                     "Veuillez entrer votre numéro de téléphone pour accéder à votre compte.",
                     style: TextStyle(
@@ -58,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
                       fontWeight: FontWeight.normal,
                     ),
                   ),
-                  const Gap(42),
+                  const Gap(32),
                   const PhoneInputField(
                     title: "Numéro de téléphone",
                   ),

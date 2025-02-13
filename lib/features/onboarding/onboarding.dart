@@ -25,7 +25,7 @@ class _OnboardingViewState extends State<OnboardingView> {
       backgroundColor: Colors.white,
       bottomSheet: Container(
         color: Colors.white,
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(8),
         child: _pageIndex == 3
             ? CustomButton(
                 onPressed: () {
@@ -93,9 +93,11 @@ class _OnboardingViewState extends State<OnboardingView> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
+                    width: 300,
+                    height: 200,
                     controller.items[index].image,
                   ),
-                  const Gap(86),
+                  const Gap(56),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 172),
                     child: Container(
@@ -115,13 +117,13 @@ class _OnboardingViewState extends State<OnboardingView> {
                       letterSpacing: -0.02,
                     ),
                   ),
-                  const Gap(26),
+                  const Gap(24),
                   Text(controller.items[index].subtitle,
                       style: const TextStyle(
                           fontWeight: FontWeight.w400,
                           height: 19.6 / 12.0,
                           color: Colors.grey,
-                          fontSize: 17),
+                          fontSize: 16),
                       textAlign: TextAlign.center),
                   const Gap(24),
                   SmoothPageIndicator(
