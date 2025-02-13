@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage> {
               title: RichText(
                 textAlign: TextAlign.center,
                 text: const TextSpan(
-                    text: 'LOYALTY ',
+                    text: 'SODI',
                     style: TextStyle(
                         fontFamily: "Dosis",
                         fontSize: 15,
@@ -54,7 +54,7 @@ class _HomePageState extends State<HomePage> {
                         fontWeight: FontWeight.w800),
                     children: <TextSpan>[
                       TextSpan(
-                          text: 'CARD',
+                          text: 'CAM',
                           style: TextStyle(
                               fontFamily: "Dosis",
                               fontSize: 15,

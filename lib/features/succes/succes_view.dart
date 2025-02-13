@@ -62,7 +62,7 @@ class _SuccesViewState extends State<SuccesView> {
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 16),
               child: Text(
-                  "Inscription réussie ! Explorez notre application et débloquez un voyage excitant vers la réussite et la facilité d'utilisation.",
+                  "Inscription réussie ! Explorez notre application et débloquez un voyage excitant vers la facilité d'utilisation.",
                   style: TextStyle(
                       fontWeight: FontWeight.w400,
                       height: 19.6 / 12.0,

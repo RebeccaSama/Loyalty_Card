@@ -50,7 +50,7 @@ class _SplashscreenPageState extends State<SplashscreenPage>
                 child: RichText(
                   textAlign: TextAlign.center,
                   text: const TextSpan(
-                      text: 'L',
+                      text: 'SODI',
                       style: TextStyle(
                           fontFamily: "Poppins",
                           fontSize: 30,
@@ -58,7 +58,7 @@ class _SplashscreenPageState extends State<SplashscreenPage>
                           fontWeight: FontWeight.w800),
                       children: <TextSpan>[
                         TextSpan(
-                            text: 'CARD',
+                            text: 'CAM',
                             style: TextStyle(
                                 fontFamily: "Poppins",
                                 fontSize: 30,
