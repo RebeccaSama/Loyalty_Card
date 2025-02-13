@@ -3,7 +3,7 @@
 <uses-feature android:name="android.hardware.camera" />
 <uses-feature android:name="android.hardware.camera.autofocus" /> 
     <application
-        android:label="Loyalty Card"
+        android:label="Sodicam"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
