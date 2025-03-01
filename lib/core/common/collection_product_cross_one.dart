@@ -91,7 +91,7 @@ class CollectionProductCrossOne extends ConsumerWidget {
                             ),
                           ),
                           child: const Text(
-                            "-32%",
+                            "-7%",
                             style: TextStyle(
                               color: AppTheme.kWhiteColor,
                               fontSize: 12,

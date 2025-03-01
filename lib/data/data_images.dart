@@ -1,5 +1,6 @@
 class DataImages {
-  static String logo = "assets/logo/logo.png";
+  static String logo = "assets/logo/logoCf.png";
+  static String logoH = "assets/logo/logoH.png";
   static String notification = "assets/images/icons.svg";
   static String frame = "assets/images/frame.svg";
   static String success = "assets/images/success.svg";
@@ -13,4 +14,6 @@ class DataImages {
   static String but = "assets/images/but.png";
   static String intermarche = "assets/images/intermarche.png";
   static String product = "assets/images/product.png";
+  static String flash = "assets/images/flash.png";
+  static String food = "assets/images/food.png";
 }

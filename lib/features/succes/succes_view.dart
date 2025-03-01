@@ -53,7 +53,7 @@ class _SuccesViewState extends State<SuccesView> {
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 30.0,
-                fontWeight: FontWeight.w700,
+                fontWeight: FontWeight.w500,
                 height: 28.8 / 24.0,
                 letterSpacing: -0.02,
               ),
@@ -64,10 +64,10 @@ class _SuccesViewState extends State<SuccesView> {
               child: Text(
                   "Inscription réussie ! Explorez notre application et débloquez un voyage excitant vers la facilité d'utilisation.",
                   style: TextStyle(
-                      fontWeight: FontWeight.w400,
+                      fontWeight: FontWeight.w300,
                       height: 19.6 / 12.0,
                       color: Colors.grey,
-                      fontSize: 17),
+                      fontSize: 16),
                   textAlign: TextAlign.center),
             ),
             const Gap(56),

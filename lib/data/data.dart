@@ -23,7 +23,7 @@ class OnboardingItems {
     ),
     Onboarding(
         image: DataImages.onboarding4,
-        title: 'Bienvenue chez SODICAM',
+        title: 'Bienvenue à CARREFOUR market',
         subtitle:
             "Nous optimisons votre expérience, boostons l’engagement et assurons une fidélité durable.")
   ];

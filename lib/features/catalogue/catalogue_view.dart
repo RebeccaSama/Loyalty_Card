@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:loyalty_card/core/common/collection_product_cross_one.dart';
 import 'package:loyalty_card/core/common/text_field_app_bar.dart';
 import 'package:loyalty_card/core/theme/themes.dart';
+import 'package:loyalty_card/data/data_images.dart';
 
 class CatalogueView extends StatefulWidget {
   const CatalogueView({super.key});
@@ -54,10 +55,10 @@ class _CatalogueViewState extends State<CatalogueView> {
         padding: const EdgeInsets.all(16),
         child: ListView.separated(
           itemBuilder: (context, index) {
-            return const CollectionProductCrossOne(
-              title: "Electroménager",
-              image: "assets/images/marmite.png", // Replace with actual path
-              price: "100 000",
+            return CollectionProductCrossOne(
+              title: "Viandes",
+              image: DataImages.food, // Replace with actual path
+              price: "2 500",
             );
           },
           separatorBuilder: (context, _) => const SizedBox(height: 8),

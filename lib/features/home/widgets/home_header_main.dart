@@ -27,12 +27,12 @@ class _HomeHeaderMainState extends ConsumerState<HomeHeaderMain> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             const Padding(
-              padding: EdgeInsets.only(left: 32),
+              padding: EdgeInsets.only(left: 16),
               child: Text(
-                "Hello,",
+                "Welcome !",
                 style: TextStyle(
                     color: AppTheme.kWhiteColor,
-                    fontSize: 24,
+                    fontSize: 20,
                     fontWeight: FontWeight.w700),
               ),
             ),
@@ -105,7 +105,7 @@ class _HomeHeaderImageState extends State<HomeHeaderImage>
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Image.asset(DataImages.marmite),
+              Image.asset(DataImages.flash, width: 150,),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -149,7 +149,7 @@ class _HomeHeaderImageState extends State<HomeHeaderImage>
                             color: AppTheme.kRedColor,
                             borderRadius: BorderRadius.circular(22)),
                         child: const Text(
-                          "- 32%",
+                          "- 7%",
                           style: TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.w500,

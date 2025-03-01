@@ -25,6 +25,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.1"
+  badges:
+    dependency: "direct main"
+    description:
+      name: badges
+      sha256: a7b6bbd60dce418df0db3058b53f9d083c22cdb5132a052145dc267494df0b84
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.1.2"
   boolean_selector:
     dependency: transitive
     description:
@@ -576,6 +584,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.28.0"
+  scaffold_gradient_background:
+    dependency: "direct main"
+    description:
+      name: scaffold_gradient_background
+      sha256: "904ee5ef0ea69e980cc4c7645418a0cd5ef94732c409f5ac114f74f51b4dd0a7"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.3+1"
   settings_ui:
     dependency: "direct main"
     description:
