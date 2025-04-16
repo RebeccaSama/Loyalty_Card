@@ -30,7 +30,6 @@ dependencies:
   stylish_bottom_bar: ^1.1.0
   flutter_platform_widgets: ^7.0.1
   flutter_rating_bar: ^4.0.1
-  qr_code_scanner: ^1.0.1
   permission_handler: ^11.3.1
   settings_ui: ^2.0.2
   avatar_glow: ^3.0.1
@@ -42,6 +41,8 @@ dependencies:
   syncfusion_flutter_gauges: ^28.1.39
   scaffold_gradient_background: 
   badges: 
+  shared_preferences: ^2.5.3
+  qr_code_scanner_plus: ^2.0.10+1
 
 dev_dependencies:
   flutter_test:
