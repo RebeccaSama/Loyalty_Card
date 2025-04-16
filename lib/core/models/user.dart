@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:loyalty_card/core/models/user_preferences.dart';
 
-
 class User {
   final String fullName;
   final String email;
@@ -42,7 +41,8 @@ class User {
       points: json['user']['points'] as int,
       wallet: json['user']['wallet'] as int,
       phoneNumber: json['user']['phoneNumber'] as String,
-      preferences: UserPreferences.fromJson(json['user']['preferences'] as Map<String, dynamic>),
+      preferences: UserPreferences.fromJson(
+          json['user']['preferences'] as Map<String, dynamic>),
       transactions: json['user']['transactions'] as List<dynamic>,
       id: json['user']['_id'] as String,
       createdAt: DateTime.parse(json['user']['createdAt'] as String),
@@ -77,4 +77,4 @@ class User {
   static User fromJsonString(String jsonString) {
     return User.fromJson(json.decode(jsonString) as Map<String, dynamic>);
   }
-} 
+}

@@ -45,13 +45,13 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                 )
               ],
             ),
-             Padding(
-              padding:const EdgeInsets.symmetric(horizontal: 16),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                 const SizedBox(height: 56),
-                 const Text(
+                  const SizedBox(height: 56),
+                  const Text(
                     "Veuillez entrer votre numéro de téléphone pour accéder à votre compte.",
                     style: TextStyle(
                       color: Colors.grey,
@@ -59,9 +59,9 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                       fontWeight: FontWeight.w300,
                     ),
                   ),
-                 const Gap(32),
+                  const Gap(32),
                   PhoneInputField(
-                    controller: loginController.emailController,
+                    controller: loginController.phoneNumberController,
                     title: "Numéro de téléphone",
                   ),
                 ],

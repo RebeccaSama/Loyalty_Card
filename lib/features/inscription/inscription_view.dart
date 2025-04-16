@@ -15,10 +15,6 @@ class InscriptionView extends ConsumerStatefulWidget {
 }
 
 class _InscriptionViewState extends ConsumerState<InscriptionView> {
-  final TextEditingController fullNameCodeController = TextEditingController();
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController phoneController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     final registerController = ref.read(registerControllerProvider);
@@ -110,21 +106,21 @@ class _InscriptionViewState extends ConsumerState<InscriptionView> {
                       setState(() {});
                     },
                   ),
-                  const Gap(16),
-                  CustomTextField(
-                    prefix: const Icon(
-                      Icons.email_outlined,
-                      color: AppTheme.kPrimaryColor,
-                    ),
-                    hint: "Password",
-                    controller: registerController.passwordController,
-                    onChanged: (_) {
-                      setState(() {});
-                    },
-                  ),
+                  // const Gap(16),
+                  // CustomTextField(
+                  //   prefix: const Icon(
+                  //     Icons.email_outlined,
+                  //     color: AppTheme.kPrimaryColor,
+                  //   ),
+                  //   hint: "phone Number ",
+                  //   controller: registerController.phoneNumberController,
+                  //   onChanged: (_) {
+                  //     setState(() {});
+                  //   },
+                  // ),
                   const Gap(16),
                   PhoneInputField(
-                    controller: phoneController,
+                    controller: registerController.phoneNumberController,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 32),

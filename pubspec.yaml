@@ -43,6 +43,8 @@ dependencies:
   badges: 
   shared_preferences: ^2.5.3
   qr_code_scanner_plus: ^2.0.10+1
+  toast: ^0.3.0
+  flutter_secure_storage: ^9.2.4
 
 dev_dependencies:
   flutter_test:
