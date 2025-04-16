@@ -1,25 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:loyalty_card/core/common/custom_button.dart';
 import 'package:loyalty_card/core/common/custom_text_field.dart';
 import 'package:loyalty_card/core/common/phonein_put_ield.dart';
 import 'package:loyalty_card/core/theme/themes.dart';
-import 'package:loyalty_card/features/succes/succes_view.dart';
+import 'package:loyalty_card/features/login/controller/register_controller.dart';
 
-class InscriptionView extends StatefulWidget {
+class InscriptionView extends ConsumerStatefulWidget {
   const InscriptionView({super.key});
 
   @override
-  State<InscriptionView> createState() => _InscriptionViewState();
+  ConsumerState<InscriptionView> createState() => _InscriptionViewState();
 }
 
-class _InscriptionViewState extends State<InscriptionView> {
+class _InscriptionViewState extends ConsumerState<InscriptionView> {
   final TextEditingController fullNameCodeController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    final registerController = ref.read(registerControllerProvider);
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -55,34 +58,66 @@ class _InscriptionViewState extends State<InscriptionView> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 56),
-                  Text(
+                  const Text(
                     "Veuillez saisir vos identifiants pour vous inscrire",
                     style: TextStyle(
-                      color: AppTheme.kPrimary50,
+                      color: Colors.grey,
                       fontSize: 16,
-                      fontWeight: FontWeight.normal,
+                      fontWeight: FontWeight.w300,
                     ),
                   ),
                   const Gap(32),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: CustomTextField(
+                          prefix: const Icon(
+                            Icons.person_2_outlined,
+                            color: AppTheme.kPrimaryColor,
+                          ),
+                          hint: "Nom",
+                          controller: registerController.lastNameController,
+                          onChanged: (_) {
+                            setState(() {});
+                          },
+                        ),
+                      ),
+                      const Gap(16),
+                      Expanded(
+                        child: CustomTextField(
+                          prefix: const Icon(
+                            Icons.person_2_outlined,
+                            color: AppTheme.kPrimaryColor,
+                          ),
+                          hint: "Prénom",
+                          controller: registerController.firstNameController,
+                          onChanged: (_) {
+                            setState(() {});
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                  const Gap(16),
                   CustomTextField(
-                    prefix: Icon(
-                      Icons.person_2_outlined,
-                      color: AppTheme.kPrimary50,
+                    prefix: const Icon(
+                      Icons.email_outlined,
+                      color: AppTheme.kPrimaryColor,
                     ),
-                    hint: "Nom et prénom",
-                    controller: fullNameCodeController,
+                    hint: "Email",
+                    controller: registerController.emailController,
                     onChanged: (_) {
                       setState(() {});
                     },
                   ),
                   const Gap(16),
                   CustomTextField(
-                    prefix: Icon(
+                    prefix: const Icon(
                       Icons.email_outlined,
-                      color: AppTheme.kPrimary50,
+                      color: AppTheme.kPrimaryColor,
                     ),
-                    hint: "Email",
-                    controller: emailController,
+                    hint: "Password",
+                    controller: registerController.passwordController,
                     onChanged: (_) {
                       setState(() {});
                     },
@@ -92,15 +127,12 @@ class _InscriptionViewState extends State<InscriptionView> {
                     controller: phoneController,
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric( vertical: 32),
+                    padding: const EdgeInsets.symmetric(vertical: 32),
                     child: CustomButton(
                       isFullWidth: true,
                       text: "S’inscrire",
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const SuccesView()));
+                      onPressed: () async {
+                        await registerController.register(context);
                       },
                     ),
                   )

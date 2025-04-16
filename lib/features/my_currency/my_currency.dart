@@ -45,26 +45,26 @@ class _MyCurrencyState extends State<MyCurrency> {
                 "Digital guide !",
                 textAlign: TextAlign.center,
                 style: GoogleFonts.dosis(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w400,
-                    color: AppTheme.kPrimary50),
+                    fontSize: 16,
+                    fontWeight: FontWeight.w300,
+                    color: Colors.grey),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 45),
-                child: Image.asset("assets/images/my_currency.png"),
+                child: Image.asset("assets/images/my_currency.png", width: 150,),
               ),
               RichText(
                 text: TextSpan(
                   text: '1500 ',
                   style: GoogleFonts.dosis(
-                      fontSize: 35,
+                      fontSize: 30,
                       fontWeight: FontWeight.w600,
                       color: AppTheme.kPrimaryColor),
                   children: <TextSpan>[
                     TextSpan(
                         text: 'XAF',
                         style: GoogleFonts.dosis(
-                            fontSize: 32,
+                            fontSize: 28,
                             fontWeight: FontWeight.w400,
                             color: AppTheme.kPrimaryColor)),
                   ],
@@ -75,16 +75,17 @@ class _MyCurrencyState extends State<MyCurrency> {
                 "Votre reliquat disponible. Utilisez-le lors de votre prochain achat !",
                 textAlign: TextAlign.center,
                 style: GoogleFonts.dosis(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w400,
-                    color: AppTheme.kPrimary50),
+                    fontSize: 18,
+                    fontWeight: FontWeight.w300,
+                    color: Colors.grey),
               ),
               const Gap(24),
               CustomButton(
                 text: "Get it",
                 isFullWidth: true,
                 onPressed: () {},
-              )
+              ),
+              const Gap(24),
             ],
           ),
         ),

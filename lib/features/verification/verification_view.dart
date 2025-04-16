@@ -51,21 +51,21 @@ class _VerificationViewState extends State<VerificationView> {
               ],
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 32),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const SizedBox(height: 56),
                   RichText(
-                    text: TextSpan(
+                    text: const TextSpan(
                       text: 'Veuillez saisir le code OTP envoyé au ',
                       style: TextStyle(
-                          color: AppTheme.kPrimary50,
+                          color: Colors.grey,
                           fontSize: 16,
-                          fontWeight: FontWeight.w400),
-                      children: const <TextSpan>[
+                          fontWeight: FontWeight.w300),
+                      children: <TextSpan>[
                         TextSpan(
-                            text: '+994 (50) *** ** 67 ',
+                            text: '+237 672 *** *47 ',
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,

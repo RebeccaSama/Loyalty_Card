@@ -48,13 +48,13 @@ class _OnboardingViewState extends State<OnboardingView> {
                           MaterialPageRoute(
                               builder: (context) => const LoginPage()));
                     },
-                    child: Text(
+                    child: const Text(
                       'skip',
                       style: TextStyle(
                         fontSize: 16,
-                        color: AppTheme.kPrimary50,
+                        color: AppTheme.kGriserColor,
                         fontFamily: 'Dosis',
-                        fontWeight: FontWeight.w500,
+                        fontWeight: FontWeight.w300,
                       ),
                     ),
                   ),
@@ -112,15 +112,15 @@ class _OnboardingViewState extends State<OnboardingView> {
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                       fontSize: 30.0,
-                      fontWeight: FontWeight.w700,
+                      fontWeight: FontWeight.w500,
                       height: 28.8 / 24.0,
                       letterSpacing: -0.02,
                     ),
                   ),
-                  const Gap(24),
+                  const Gap(16),
                   Text(controller.items[index].subtitle,
                       style: const TextStyle(
-                          fontWeight: FontWeight.w400,
+                          fontWeight: FontWeight.w300,
                           height: 19.6 / 12.0,
                           color: Colors.grey,
                           fontSize: 16),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:loyalty_card/core/theme/themes.dart';
+import 'package:loyalty_card/data/data_images.dart';
 import 'package:loyalty_card/features/onboarding/onboarding.dart';
 
 class SplashscreenPage extends StatefulWidget {
@@ -43,30 +44,11 @@ class _SplashscreenPageState extends State<SplashscreenPage>
         body: Stack(
           alignment: Alignment.center,
           children: [
-            // Center(child: Image.asset(DataImages.logo)),
+            // Center(child: Image.asset(DataImages.logo, width: 100, height: 100)),
             Center(
               child: FadeTransition(
-                opacity: _opacityTween,
-                child: RichText(
-                  textAlign: TextAlign.center,
-                  text: const TextSpan(
-                      text: 'L',
-                      style: TextStyle(
-                          fontFamily: "Poppins",
-                          fontSize: 30,
-                          color: AppTheme.kWhiteColor,
-                          fontWeight: FontWeight.w800),
-                      children: <TextSpan>[
-                        TextSpan(
-                            text: 'CARD',
-                            style: TextStyle(
-                                fontFamily: "Poppins",
-                                fontSize: 30,
-                                color: AppTheme.kRedColor,
-                                fontWeight: FontWeight.w800)),
-                      ]),
-                ),
-              ),
+                  opacity: _opacityTween,
+                  child: Image.asset(DataImages.logo, width: 100, height: 100)),
             ),
             const Positioned(
               bottom: 110,
