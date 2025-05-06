@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:loyalty_card/core/theme/themes.dart';
 import 'package:loyalty_card/features/catalogue/catalogue_view.dart';
@@ -8,14 +9,14 @@ import 'package:loyalty_card/features/profile/profile_page.dart';
 import 'package:loyalty_card/features/qr_code/qr_code_page.dart';
 import 'package:stylish_bottom_bar/stylish_bottom_bar.dart';
 
-class BottomNavigation extends StatefulWidget {
+class BottomNavigation extends ConsumerStatefulWidget {
   const BottomNavigation({super.key});
 
   @override
-  State<BottomNavigation> createState() => _BottomNavigationState();
+  ConsumerState<BottomNavigation> createState() => _BottomNavigationState();
 }
 
-class _BottomNavigationState extends State<BottomNavigation> {
+class _BottomNavigationState extends ConsumerState<BottomNavigation> {
   int selectedIndex = 0;
   final PageController _controller = PageController();
 
@@ -108,7 +109,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
         backgroundColor: AppTheme.kPrimaryColor,
         onPressed: () {
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const QRViewState()));
+              MaterialPageRoute(builder: (context) => const QrCodePage()));
         },
         child: const Icon(Iconsax.scan_outline, color: Colors.white),
       ),

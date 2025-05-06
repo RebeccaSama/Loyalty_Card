@@ -5,7 +5,6 @@ import 'package:dio/dio.dart';
 import 'package:loyalty_card/core/constants/constants.dart';
 import 'package:loyalty_card/core/enums/enums.dart';
 import 'package:loyalty_card/core/failures/failure.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class ResponseData {
   ResponseData({
@@ -37,13 +36,8 @@ class ApiProvider {
       isFromData = false}) async {
     var url = (baseUrl ?? this.baseUrl!) + endPoint;
 
-    final sharedPreferences = await SharedPreferences.getInstance();
-
-    var locale = sharedPreferences.getString("locale");
-
     var headersWithContentType = {
       "content-type": "application/json",
-      "x-user-language": locale == "en" ? "EN" : "FR",
     };
 
     if (headers != null) {

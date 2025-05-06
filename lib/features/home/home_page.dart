@@ -8,21 +8,22 @@ import 'package:loyalty_card/core/theme/themes.dart';
 import 'package:loyalty_card/data/data_images.dart';
 import 'package:loyalty_card/features/home/widgets/collection_products_list_horizontal.dart';
 import 'package:loyalty_card/features/home/widgets/home_header_main.dart';
-import 'package:loyalty_card/features/login/login_page.dart';
+import 'package:loyalty_card/features/login/login_view.dart';
 import 'package:loyalty_card/features/my_currency/my_currency.dart';
 import 'package:loyalty_card/features/notification/notification_page.dart';
 import 'package:loyalty_card/features/points_page/points_page.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  const HomePage({
+    super.key,
+  });
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  int notificationCount =
-      3; // Initialiser notificationCount à 3 (ou tout autre nombre)
+  int notificationCount = 3;
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +90,9 @@ class _HomePageState extends State<HomePage> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => const MyCurrency()));
+                                    builder: (context) => const MyCurrency(
+                                        // user: widget.user,
+                                        )));
                           },
                           child: const Row(
                             children: [
@@ -133,7 +136,7 @@ class _HomePageState extends State<HomePage> {
                             Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => const LoginPage()));
+                                    builder: (context) => const LoginView()));
                           },
                           child: const Row(
                             children: [
@@ -210,7 +213,7 @@ class _HomePageState extends State<HomePage> {
             ),*/
             Container(
               padding: const EdgeInsets.all(16),
-              color: AppTheme.kPrimary12 ,
+              color: AppTheme.kPrimary12,
               child: IntrinsicHeight(
                 child: Column(
                   children: [
@@ -267,42 +270,40 @@ class _HomePageState extends State<HomePage> {
                     ),
                     const Gap(8),
                     Row(
-                  children: [
-                    Container(
-                      width: 120,
-                      height: 25,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: AppTheme.kPrimary50),
-                          borderRadius: BorderRadius.circular(20)),
-                      child: Center(
-                        child: Text("Douala Grand Mall",
-                            style: GoogleFonts.dosis(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w300,
-                              color: AppTheme.kPrimaryColor,
-                            )),
-                      ),
+                      children: [
+                        Container(
+                          width: 120,
+                          height: 25,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: AppTheme.kPrimary50),
+                              borderRadius: BorderRadius.circular(20)),
+                          child: Center(
+                            child: Text("Douala Grand Mall",
+                                style: GoogleFonts.dosis(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w300,
+                                  color: AppTheme.kPrimaryColor,
+                                )),
+                          ),
+                        ),
+                        const SizedBox(width: 16),
+                        Container(
+                          width: 100,
+                          height: 25,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: AppTheme.kPrimary50),
+                              borderRadius: BorderRadius.circular(20)),
+                          child: Center(
+                            child: Text("Ancien DALIP",
+                                style: GoogleFonts.dosis(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w300,
+                                  color: AppTheme.kPrimaryColor,
+                                )),
+                          ),
+                        ),
+                      ],
                     ),
-                    const SizedBox(width: 16),
-                    Container(
-                      width: 100,
-                      height: 25,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: AppTheme.kPrimary50),
-                          borderRadius: BorderRadius.circular(20)),
-                      child: Center(
-                        child: Text("Ancien DALIP",
-                            style: GoogleFonts.dosis(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w300,
-                              color: AppTheme.kPrimaryColor,
-                            )),
-                      ),
-                    ),
-                    
-                  ],
-                ),
-                            
                   ],
                 ),
               ),

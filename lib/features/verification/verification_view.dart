@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:loyalty_card/core/theme/themes.dart';
-import 'package:loyalty_card/features/inscription/inscription_view.dart';
+import 'package:loyalty_card/features/inscription/register_view.dart';
 import 'package:pinput/pinput.dart';
 
 class VerificationView extends StatefulWidget {
@@ -187,7 +187,7 @@ class _VerificationViewState extends State<VerificationView> {
                       Future.delayed(const Duration(seconds: 3), () {
                         Navigator.of(context).pushReplacement(
                           MaterialPageRoute(
-                            builder: (context) => const InscriptionView(),
+                            builder: (context) => const RegisterView(),
                           ),
                         );
                       });

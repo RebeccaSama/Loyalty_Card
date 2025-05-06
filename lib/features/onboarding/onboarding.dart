@@ -3,8 +3,9 @@ import 'package:gap/gap.dart';
 import 'package:loyalty_card/core/common/custom_button.dart';
 import 'package:loyalty_card/core/theme/themes.dart';
 import 'package:loyalty_card/data/data.dart';
-import 'package:loyalty_card/features/login/login_page.dart';
+import 'package:loyalty_card/features/login/login_view.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class OnboardingView extends StatefulWidget {
   const OnboardingView({super.key});
@@ -28,11 +29,14 @@ class _OnboardingViewState extends State<OnboardingView> {
         padding: const EdgeInsets.all(8),
         child: _pageIndex == 3
             ? CustomButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const LoginPage()));
+                onPressed: () async {
+                  final prefs = await SharedPreferences.getInstance();
+                  await prefs.setBool('hasSeenOnboarding', true);
+                  if (!context.mounted) return;
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const LoginView()),
+                  );
                 },
                 isFullWidth: true,
                 text: "Démarrer",
@@ -42,11 +46,15 @@ class _OnboardingViewState extends State<OnboardingView> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const LoginPage()));
+                    onPressed: () async {
+                      final prefs = await SharedPreferences.getInstance();
+                      await prefs.setBool('hasSeenOnboarding', true);
+                      if (!context.mounted) return;
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const LoginView()),
+                      );
                     },
                     child: const Text(
                       'skip',

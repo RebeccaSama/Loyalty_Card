@@ -1,17 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:loyalty_card/core/common/custom_button.dart';
+import 'package:loyalty_card/core/models/user.dart';
 import 'package:loyalty_card/core/theme/themes.dart';
+import 'package:loyalty_card/features/login/controller/login_controller.dart';
 
-class MyCurrency extends StatefulWidget {
+class MyCurrency extends ConsumerStatefulWidget {
   const MyCurrency({super.key});
 
   @override
-  State<MyCurrency> createState() => _MyCurrencyState();
+  ConsumerState<MyCurrency> createState() => _MyCurrencyState();
 }
 
-class _MyCurrencyState extends State<MyCurrency> {
+class _MyCurrencyState extends ConsumerState<MyCurrency> {
+  User? user;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUser();
+  }
+
+  Future<void> _loadUser() async {
+    final userMap = await ref.read(loginControllerProvider.notifier).getUser();
+    if (userMap != null) {
+      setState(() {
+        user = User.fromLocalJson(userMap);
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,18 +71,21 @@ class _MyCurrencyState extends State<MyCurrency> {
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 45),
-                child: Image.asset("assets/images/my_currency.png", width: 150,),
+                child: Image.asset(
+                  "assets/images/my_currency.png",
+                  width: 150,
+                ),
               ),
               RichText(
                 text: TextSpan(
-                  text: '1500 ',
+                  text: user?.wallet.toString(),
                   style: GoogleFonts.dosis(
                       fontSize: 30,
                       fontWeight: FontWeight.w600,
                       color: AppTheme.kPrimaryColor),
                   children: <TextSpan>[
                     TextSpan(
-                        text: 'XAF',
+                        text: ' XAF',
                         style: GoogleFonts.dosis(
                             fontSize: 28,
                             fontWeight: FontWeight.w400,

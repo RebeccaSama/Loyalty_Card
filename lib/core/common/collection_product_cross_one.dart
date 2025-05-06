@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:icons_plus/icons_plus.dart';
+import 'package:loyalty_card/core/models/products/product.dart';
 import 'package:loyalty_card/core/theme/themes.dart';
 
 class CollectionProductCrossOne extends ConsumerWidget {
-  final String image, title, price;
-
+  final Product product;
   const CollectionProductCrossOne({
     Key? key,
-    required this.image,
-    required this.title,
-    required this.price,
+    required this.product,
   }) : super(key: key);
 
   @override
@@ -20,7 +19,7 @@ class CollectionProductCrossOne extends ConsumerWidget {
       shadowColor: Colors.black26,
       borderRadius: BorderRadius.circular(8),
       child: Container(
-        padding: const EdgeInsets.all(8),
+        padding: const EdgeInsets.only(top: 8, left: 8, bottom: 8),
         decoration: BoxDecoration(
             color: Colors.white,
             border: Border.all(width: 1, color: AppTheme.kPrimary12),
@@ -30,15 +29,28 @@ class CollectionProductCrossOne extends ConsumerWidget {
             GestureDetector(
               onTap: () {},
               child: Container(
-                width: 105,
-                height: 105,
-                decoration: BoxDecoration(
-                  color: const Color(0x1304544D),
-                  borderRadius: BorderRadius.circular(8),
-                  image: DecorationImage(
-                      image: AssetImage(image), fit: BoxFit.cover),
-                ),
-              ),
+                  width: 105,
+                  height: 105,
+                  decoration: BoxDecoration(
+                    color: const Color(0x1304544D),
+                    borderRadius: BorderRadius.circular(8),
+                    // image: product.imageUrl.isEmpty
+                    //     ? DecorationImage(
+                    //         image: AssetImage(product.imageUrl),
+                    //         fit: BoxFit.cover,
+                    //       )
+                    //     : const DecorationImage(
+                    //         image: AssetImage('assets/images/empty_image.png'),
+                    //         fit: BoxFit.cover,
+                    // ),
+                  ),
+                  child: const Center(
+                    child: Icon(
+                      Iconsax.image_outline,
+                      color: Colors.grey,
+                      size: 75,
+                    ),
+                  )),
             ),
             Expanded(
               child: Padding(
@@ -47,7 +59,7 @@ class CollectionProductCrossOne extends ConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      title,
+                      product.name,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
@@ -58,7 +70,7 @@ class CollectionProductCrossOne extends ConsumerWidget {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      "$price FCFA",
+                      "${product.price} FCFA",
                       style: const TextStyle(
                         color: AppTheme.kPrimaryColor,
                         fontSize: 14,
@@ -69,9 +81,9 @@ class CollectionProductCrossOne extends ConsumerWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text(
-                          "1 123 000 FCFA",
-                          style: TextStyle(
+                        Text(
+                          "${product.oldPrice}FCFA",
+                          style: const TextStyle(
                             color: AppTheme.kPrimaryColor,
                             fontSize: 12,
                             fontStyle: FontStyle.italic,
@@ -90,9 +102,9 @@ class CollectionProductCrossOne extends ConsumerWidget {
                               bottomLeft: Radius.circular(22),
                             ),
                           ),
-                          child: const Text(
-                            "-7%",
-                            style: TextStyle(
+                          child: Text(
+                            "-${product.discount.percentage}%",
+                            style: const TextStyle(
                               color: AppTheme.kWhiteColor,
                               fontSize: 12,
                             ),
@@ -100,11 +112,11 @@ class CollectionProductCrossOne extends ConsumerWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 8), // Add spacing
+                    const SizedBox(height: 8),
                     Row(
                       children: [
                         RatingBar(
-                          initialRating: 3.5,
+                          initialRating: product.price.toDouble(),
                           minRating: 1,
                           direction: Axis.horizontal,
                           allowHalfRating: true,
@@ -129,19 +141,19 @@ class CollectionProductCrossOne extends ConsumerWidget {
                           onRatingUpdate: (_) {},
                         ),
                         const SizedBox(width: 5.5),
-                        const Text(
-                          "3.5",
-                          style: TextStyle(
+                        Text(
+                          product.rating.toString(),
+                          style: const TextStyle(
                             color: Color.fromRGBO(0, 0, 0, 0.54),
                             fontSize: 13,
                           ),
                         ),
                         const Spacer(),
-                        const Padding(
-                          padding: EdgeInsets.only(right: 8),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 8),
                           child: Text(
-                            "1000 unités",
-                            style: TextStyle(
+                            "${product.stock} unités",
+                            style: const TextStyle(
                               color: Color.fromRGBO(0, 0, 0, 0.54),
                               fontSize: 10,
                             ),

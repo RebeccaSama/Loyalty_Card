@@ -1,4 +1,3 @@
-
 class UserPreferences {
   final String language;
   final bool notifications;

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:loyalty_card/core/common/app_typography.dart';
-import 'package:loyalty_card/core/common/collection_product_cross_one.dart';
 import 'package:loyalty_card/core/theme/themes.dart';
 
 class HistoriqueView extends StatefulWidget {
@@ -51,37 +50,37 @@ class _HistoriqueViewState extends State<HistoriqueView> {
                 ],
               ),
             ),
-            Expanded(
+            const Expanded(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
+                padding: EdgeInsets.symmetric(horizontal: 16),
                 child: TabBarView(
                   children: [
-                    ListView.separated(
-                      itemBuilder: (context, index) {
-                        return const CollectionProductCrossOne(
-                          title: "Electroménager",
-                          image:
-                              "assets/images/marmite.png", // Replace with actual path
-                          price: "100 000",
-                        );
-                      },
-                      separatorBuilder: (context, _) =>
-                          const SizedBox(height: 8),
-                      itemCount: 5,
-                    ),
-                    ListView.separated(
-                      itemBuilder: (context, index) {
-                        return const CollectionProductCrossOne(
-                          title: "Electroménager",
-                          image:
-                              "assets/images/marmite.png", // Replace with actual path
-                          price: "100 000",
-                        );
-                      },
-                      separatorBuilder: (context, _) =>
-                          const SizedBox(height: 8),
-                      itemCount: 5,
-                    )
+                    // ListView.separated(
+                    //   itemBuilder: (context, index) {
+                    //     return const CollectionProductCrossOne(
+                    //       title: "Electroménager",
+                    //       image:
+                    //           "assets/images/marmite.png", // Replace with actual path
+                    //       price: "100 000",
+                    //     );
+                    //   },
+                    //   separatorBuilder: (context, _) =>
+                    //       const SizedBox(height: 8),
+                    //   itemCount: 5,
+                    // ),
+                    // ListView.separated(
+                    //   itemBuilder: (context, index) {
+                    //     return const CollectionProductCrossOne(
+                    //       title: "Electroménager",
+                    //       image:
+                    //           "assets/images/marmite.png", // Replace with actual path
+                    //       price: "100 000",
+                    //     );
+                    //   },
+                    //   separatorBuilder: (context, _) =>
+                    //       const SizedBox(height: 8),
+                    //   itemCount: 5,
+                    // )
                   ],
                 ),
               ),

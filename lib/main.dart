@@ -4,10 +4,9 @@ import 'package:loyalty_card/features/splashscreen/splashscreen_page.dart';
 
 void main() {
   runApp(
-  const ProviderScope(child: MyApp()),
+    const ProviderScope(child: MyApp()),
   );
 }
-
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -15,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Loyalty Card',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),

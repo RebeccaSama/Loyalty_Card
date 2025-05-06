@@ -5,23 +5,19 @@ import 'package:loyalty_card/core/common/custom_button.dart';
 import 'package:loyalty_card/core/common/custom_text_field.dart';
 import 'package:loyalty_card/core/common/phonein_put_ield.dart';
 import 'package:loyalty_card/core/theme/themes.dart';
-import 'package:loyalty_card/features/login/controller/register_controller.dart';
+import 'package:loyalty_card/features/inscription/controller/register_controller.dart';
 
-class InscriptionView extends ConsumerStatefulWidget {
-  const InscriptionView({super.key});
+class RegisterView extends ConsumerStatefulWidget {
+  const RegisterView({super.key});
 
   @override
-  ConsumerState<InscriptionView> createState() => _InscriptionViewState();
+  ConsumerState<RegisterView> createState() => _RegisterViewState();
 }
 
-class _InscriptionViewState extends ConsumerState<InscriptionView> {
-  final TextEditingController fullNameCodeController = TextEditingController();
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController phoneController = TextEditingController();
-
+class _RegisterViewState extends ConsumerState<RegisterView> {
   @override
   Widget build(BuildContext context) {
-    final registerController = ref.read(registerControllerProvider);
+    final registerController = ref.watch(registerControllerProvider);
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -71,9 +67,10 @@ class _InscriptionViewState extends ConsumerState<InscriptionView> {
                     children: [
                       Expanded(
                         child: CustomTextField(
-                          prefix: const Icon(
+                          prefix: Icon(
                             Icons.person_2_outlined,
-                            color: AppTheme.kPrimaryColor,
+                            color:
+                                AppTheme.kPrimaryColor.withValues(alpha: 0.3),
                           ),
                           hint: "Nom",
                           controller: registerController.lastNameController,
@@ -85,9 +82,10 @@ class _InscriptionViewState extends ConsumerState<InscriptionView> {
                       const Gap(16),
                       Expanded(
                         child: CustomTextField(
-                          prefix: const Icon(
+                          prefix: Icon(
                             Icons.person_2_outlined,
-                            color: AppTheme.kPrimaryColor,
+                            color:
+                                AppTheme.kPrimaryColor.withValues(alpha: 0.3),
                           ),
                           hint: "Prénom",
                           controller: registerController.firstNameController,
@@ -100,9 +98,10 @@ class _InscriptionViewState extends ConsumerState<InscriptionView> {
                   ),
                   const Gap(16),
                   CustomTextField(
-                    prefix: const Icon(
+                    keyboardType: TextInputType.emailAddress,
+                    prefix: Icon(
                       Icons.email_outlined,
-                      color: AppTheme.kPrimaryColor,
+                      color: AppTheme.kPrimaryColor.withValues(alpha: 0.3),
                     ),
                     hint: "Email",
                     controller: registerController.emailController,
@@ -111,26 +110,21 @@ class _InscriptionViewState extends ConsumerState<InscriptionView> {
                     },
                   ),
                   const Gap(16),
-                  CustomTextField(
-                    prefix: const Icon(
-                      Icons.email_outlined,
-                      color: AppTheme.kPrimaryColor,
-                    ),
-                    hint: "Password",
-                    controller: registerController.passwordController,
-                    onChanged: (_) {
-                      setState(() {});
-                    },
-                  ),
-                  const Gap(16),
                   PhoneInputField(
-                    controller: phoneController,
+                    controller: registerController.phoneNumberController,
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 32),
+                    padding: const EdgeInsets.symmetric(vertical: 72),
                     child: CustomButton(
                       isFullWidth: true,
                       text: "S’inscrire",
+                      isDisabled: registerController.isLoading ||
+                          registerController.lastNameController.text.isEmpty ||
+                          registerController.firstNameController.text.isEmpty ||
+                          registerController
+                              .phoneNumberController.text.isEmpty ||
+                          registerController.emailController.text.isEmpty,
+                      loading: registerController.isLoading,
                       onPressed: () async {
                         await registerController.register(context);
                       },

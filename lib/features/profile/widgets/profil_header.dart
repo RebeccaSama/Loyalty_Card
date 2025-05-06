@@ -1,22 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_advanced_avatar/flutter_advanced_avatar.dart';
 import 'package:gap/gap.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:loyalty_card/core/common/app_typography.dart';
+import 'package:loyalty_card/core/models/user.dart';
 import 'package:loyalty_card/core/theme/themes.dart';
-import 'package:loyalty_card/data/data_images.dart';
+import 'package:loyalty_card/core/utils/color_contacts.dart';
 import 'package:loyalty_card/features/profile/widgets/primary_container.dart';
 import 'package:tuple/tuple.dart';
 
 class ProfilHeader extends StatelessWidget {
+  final User user;
   const ProfilHeader({
     super.key,
+    required this.user,
   });
 
   @override
   Widget build(BuildContext context) {
+    String inscriptionDepuis(DateTime createdAt) {
+      final now = DateTime.now();
+      final difference = now.difference(createdAt);
+
+      if (difference.inDays < 1) {
+        return "Inscris aujourd'hui";
+      } else if (difference.inDays < 30) {
+        return "Inscris depuis ${difference.inDays} jour${difference.inDays > 1 ? 's' : ''}";
+      } else if (difference.inDays < 365) {
+        final months = (difference.inDays / 30).floor();
+        return "Inscris depuis $months mois";
+      } else {
+        final years = (difference.inDays / 365).floor();
+        return "Inscris depuis $years an${years > 1 ? 's' : ''}";
+      }
+    }
+
     List<Tuple2> items = [
-      const Tuple2(Icons.phone, "+237 674053983"),
-      const Tuple2(Icons.email_outlined, "samarebecca@gmail.com")
+      Tuple2(Icons.phone, "+237 ${user.phoneNumber}"),
+      Tuple2(Icons.email_outlined, user.email)
     ];
     return Stack(
       children: [
@@ -26,25 +47,25 @@ class ProfilHeader extends StatelessWidget {
             children: [
               ListTile(
                 onTap: () {},
-                leading: Container(
-                  width: 60,
-                  height: 60,
+                leading: AdvancedAvatar(
+                  name: user.fullName,
+                  statusAlignment: Alignment.bottomRight,
+                  size: 56,
+                  style: AppTypography.kBold16.copyWith(color: Colors.white),
                   decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      image: DecorationImage(
-                        image: AssetImage(DataImages.product),
-                        fit: BoxFit.cover,
-                      )),
+                    color: colorAvatar(user.fullName),
+                    borderRadius: BorderRadius.circular(30),
+                  ),
                 ),
                 title: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Rebecca SAMA",
+                      user.fullName,
                       style: AppTypography.kBold16,
                     ),
                     Text(
-                      "Inscris depuis 02 mois",
+                      inscriptionDepuis(user.createdAt),
                       style: AppTypography.kExtraLight14,
                     )
                   ],

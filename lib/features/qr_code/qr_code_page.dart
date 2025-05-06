@@ -7,14 +7,14 @@ import 'package:loyalty_card/features/points_page/points_page.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:qr_code_scanner_plus/qr_code_scanner_plus.dart';
 
-class QRViewState extends StatefulWidget {
-  const QRViewState({super.key});
+class QrCodePage extends StatefulWidget {
+  const QrCodePage({super.key});
 
   @override
-  State<QRViewState> createState() => _QRViewState();
+  State<QrCodePage> createState() => _QrCodePage();
 }
 
-class _QRViewState extends State<QRViewState> {
+class _QrCodePage extends State<QrCodePage> {
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
 
   Barcode? result;

@@ -2,13 +2,12 @@ import 'dart:convert';
 
 import 'package:loyalty_card/core/models/user_preferences.dart';
 
-
 class User {
   final String fullName;
   final String email;
   final String role;
   final int points;
-  final int wallet;
+  final dynamic wallet;
   final String phoneNumber;
   final UserPreferences preferences;
   final List<dynamic> transactions;
@@ -40,9 +39,10 @@ class User {
       email: json['user']['email'] as String,
       role: json['user']['role'] as String,
       points: json['user']['points'] as int,
-      wallet: json['user']['wallet'] as int,
+      wallet: json['user']['wallet'] as dynamic,
       phoneNumber: json['user']['phoneNumber'] as String,
-      preferences: UserPreferences.fromJson(json['user']['preferences'] as Map<String, dynamic>),
+      preferences: UserPreferences.fromJson(
+          json['user']['preferences'] as Map<String, dynamic>),
       transactions: json['user']['transactions'] as List<dynamic>,
       id: json['user']['_id'] as String,
       createdAt: DateTime.parse(json['user']['createdAt'] as String),
@@ -77,4 +77,23 @@ class User {
   static User fromJsonString(String jsonString) {
     return User.fromJson(json.decode(jsonString) as Map<String, dynamic>);
   }
-} 
+
+  factory User.fromLocalJson(Map<String, dynamic> json) {
+    return User(
+      fullName: json['fullName'] as String,
+      email: json['email'] as String,
+      role: json['role'] as String,
+      points: json['points'] as int,
+      wallet: json['wallet'] as dynamic,
+      phoneNumber: json['phoneNumber'] as String,
+      preferences:
+          UserPreferences.fromJson(json['preferences'] as Map<String, dynamic>),
+      transactions: json['transactions'] as List<dynamic>,
+      id: json['_id'] as String,
+      createdAt: DateTime.parse(json['createdAt'] as String),
+      updatedAt: DateTime.parse(json['updatedAt'] as String),
+      accessToken: '', // Pas stocké en local, à adapter si besoin
+      refreshToken: json['refreshToken'] as String,
+    );
+  }
+}

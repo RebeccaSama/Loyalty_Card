@@ -41,11 +41,11 @@ class CustomButton extends StatelessWidget {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8))),
           child: loading
-              ? SizedBox(
+              ? const SizedBox(
                   width: 20,
                   height: 20,
                   child: CircularProgressIndicator.adaptive(
-                    valueColor: AlwaysStoppedAnimation(colorText),
+                    valueColor: AlwaysStoppedAnimation(Colors.white),
                     strokeWidth: 2,
                   ),
                 )

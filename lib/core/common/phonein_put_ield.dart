@@ -5,8 +5,9 @@ import 'package:loyalty_card/core/theme/themes.dart';
 class PhoneInputField extends StatefulWidget {
   final String? title;
   final TextEditingController? controller;
-
-  const PhoneInputField({super.key, this.controller, this.title});
+  final FocusNode? focusNode;
+  const PhoneInputField(
+      {super.key, this.controller, this.title, this.focusNode});
 
   @override
   State<PhoneInputField> createState() => _PhoneInputFieldState();
@@ -39,6 +40,7 @@ class _PhoneInputFieldState extends State<PhoneInputField> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               InternationalPhoneNumberInput(
+                focusNode: widget.focusNode,
                 textStyle: const TextStyle(
                     color: AppTheme.kPrimaryColor,
                     fontSize: 16,
