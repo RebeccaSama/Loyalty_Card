@@ -1,29 +1,48 @@
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badges;
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:loyalty_card/core/common/row_title.dart';
+import 'package:loyalty_card/core/models/user.dart';
 import 'package:loyalty_card/core/theme/themes.dart';
 import 'package:loyalty_card/data/data_images.dart';
 import 'package:loyalty_card/features/home/widgets/collection_products_list_horizontal.dart';
 import 'package:loyalty_card/features/home/widgets/home_header_main.dart';
+import 'package:loyalty_card/features/home/widgets/point_of_sale_widget.dart';
+import 'package:loyalty_card/features/login/controller/login_controller.dart';
 import 'package:loyalty_card/features/login/login_view.dart';
 import 'package:loyalty_card/features/my_currency/my_currency.dart';
 import 'package:loyalty_card/features/notification/notification_page.dart';
 import 'package:loyalty_card/features/points_page/points_page.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends ConsumerStatefulWidget {
   const HomePage({
     super.key,
   });
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  ConsumerState<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends ConsumerState<HomePage> {
   int notificationCount = 3;
+  User? user;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUser();
+  }
+
+  Future<void> _loadUser() async {
+    final userMap = await ref.read(loginControllerProvider.notifier).getUser();
+    if (userMap != null) {
+      setState(() {
+        user = User.fromLocalJson(userMap);
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -211,103 +230,7 @@ class _HomePageState extends State<HomePage> {
                       },
               ),
             ),*/
-            Container(
-              padding: const EdgeInsets.all(16),
-              color: AppTheme.kPrimary12,
-              child: IntrinsicHeight(
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Container(
-                          width: 80,
-                          height: 25,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: AppTheme.kPrimary50),
-                              borderRadius: BorderRadius.circular(20)),
-                          child: Center(
-                            child: Text("Bonaberi",
-                                style: GoogleFonts.dosis(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w300,
-                                  color: AppTheme.kPrimaryColor,
-                                )),
-                          ),
-                        ),
-                        const SizedBox(width: 16),
-                        Container(
-                          width: 80,
-                          height: 25,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: AppTheme.kPrimary50),
-                              borderRadius: BorderRadius.circular(20)),
-                          child: Center(
-                            child: Text("Logpom",
-                                style: GoogleFonts.dosis(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w300,
-                                  color: AppTheme.kPrimaryColor,
-                                )),
-                          ),
-                        ),
-                        const SizedBox(width: 16),
-                        Container(
-                          width: 100,
-                          height: 25,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: AppTheme.kPrimary50),
-                              borderRadius: BorderRadius.circular(20)),
-                          child: Center(
-                            child: Text("Bonamoussadi",
-                                style: GoogleFonts.dosis(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w300,
-                                  color: AppTheme.kPrimaryColor,
-                                )),
-                          ),
-                        )
-                      ],
-                    ),
-                    const Gap(8),
-                    Row(
-                      children: [
-                        Container(
-                          width: 120,
-                          height: 25,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: AppTheme.kPrimary50),
-                              borderRadius: BorderRadius.circular(20)),
-                          child: Center(
-                            child: Text("Douala Grand Mall",
-                                style: GoogleFonts.dosis(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w300,
-                                  color: AppTheme.kPrimaryColor,
-                                )),
-                          ),
-                        ),
-                        const SizedBox(width: 16),
-                        Container(
-                          width: 100,
-                          height: 25,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: AppTheme.kPrimary50),
-                              borderRadius: BorderRadius.circular(20)),
-                          child: Center(
-                            child: Text("Ancien DALIP",
-                                style: GoogleFonts.dosis(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w300,
-                                  color: AppTheme.kPrimaryColor,
-                                )),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
+            const PointOfSaleWidget(),
             const Gap(32),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 16),

@@ -4,9 +4,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
+import 'package:loyalty_card/core/models/flash-sale/flash_sale.dart';
 import 'package:loyalty_card/core/theme/themes.dart';
 import 'package:loyalty_card/data/data_images.dart';
+import 'package:loyalty_card/features/home/controller/flash_sale_controller.dart';
 import 'package:loyalty_card/features/home/widgets/dot_indicator.dart';
+import 'package:loyalty_card/features/home/widgets/home_header_skeleton.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:icons_plus/icons_plus.dart';
 
 class HomeHeaderMain extends ConsumerStatefulWidget {
   const HomeHeaderMain({Key? key}) : super(key: key);
@@ -20,6 +25,8 @@ class _HomeHeaderMainState extends ConsumerState<HomeHeaderMain> {
 
   @override
   Widget build(BuildContext context) {
+    final flashSalesAsync = ref.watch(flashSalesProvider);
+
     return Column(
       children: <Widget>[
         const Gap(70),
@@ -29,7 +36,7 @@ class _HomeHeaderMainState extends ConsumerState<HomeHeaderMain> {
             const Padding(
               padding: EdgeInsets.only(left: 16),
               child: Text(
-                "Welcome !",
+                "Welcome!",
                 style: TextStyle(
                     color: AppTheme.kWhiteColor,
                     fontSize: 20,
@@ -37,30 +44,49 @@ class _HomeHeaderMainState extends ConsumerState<HomeHeaderMain> {
               ),
             ),
             const Gap(16),
-            GestureDetector(
-              onTap: () {},
-              child: CarouselSlider.builder(
-                itemCount: 5,
-                options: CarouselOptions(
-                  height: 170,
-                  autoPlay: true,
-                  viewportFraction: 1,
-                  onPageChanged: (index, reason) =>
-                      setState(() => activeIndex = index),
-                ),
-                itemBuilder: (context, index, realIndex) {
-                  return HomeHeaderImage(index: index);
-                },
+            flashSalesAsync.when(
+              loading: () => const HomeHeaderSkeleton(),
+              error: (error, stack) => Center(
+                child: Text('Erreur: $error'),
               ),
+              data: (flashSales) {
+                if (flashSales.isEmpty) {
+                  return const Center(
+                    child: Text('Aucun flash sale disponible'),
+                  );
+                }
+
+                return GestureDetector(
+                  onTap: () {},
+                  child: CarouselSlider.builder(
+                    itemCount: flashSales.length,
+                    options: CarouselOptions(
+                      height: 170,
+                      autoPlay: true,
+                      viewportFraction: 1,
+                      onPageChanged: (index, reason) =>
+                          setState(() => activeIndex = index),
+                    ),
+                    itemBuilder: (context, index, realIndex) {
+                      return HomeHeaderImage(flashSale: flashSales[index]);
+                    },
+                  ),
+                );
+              },
             ),
-            const SizedBox(
-              height: 16,
-            ),
+            const SizedBox(height: 16),
             Padding(
               padding: const EdgeInsets.only(left: 8),
               child: Center(
-                child: Container(
-                  child: buildIndicator(),
+                child: flashSalesAsync.when(
+                  loading: () => const SizedBox(),
+                  error: (_, __) => const SizedBox(),
+                  data: (flashSales) => DotIndicator(
+                    selectedIndex: activeIndex,
+                    length: flashSales.length,
+                    dotSelectedColor: AppTheme.kRedColor,
+                    dotUnselectedColor: const Color(0xffEEEEEE),
+                  ),
                 ),
               ),
             ),
@@ -69,18 +95,11 @@ class _HomeHeaderMainState extends ConsumerState<HomeHeaderMain> {
       ],
     );
   }
-
-  buildIndicator() => DotIndicator(
-        selectedIndex: activeIndex,
-        length: 5,
-        dotSelectedColor: AppTheme.kRedColor,
-        dotUnselectedColor: const Color(0xffEEEEEE),
-      );
 }
 
 class HomeHeaderImage extends StatefulWidget {
-  final int index;
-  const HomeHeaderImage({Key? key, required this.index}) : super(key: key);
+  final FlashSale flashSale;
+  const HomeHeaderImage({Key? key, required this.flashSale}) : super(key: key);
 
   @override
   State<HomeHeaderImage> createState() => _HomeHeaderImageState();
@@ -105,7 +124,36 @@ class _HomeHeaderImageState extends State<HomeHeaderImage>
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Image.asset(DataImages.flash, width: 150,),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: CachedNetworkImage(
+                  imageUrl:
+                      "https://vist-card-backend.onrender.com/api/files/${widget.flashSale.product.imageUrl}",
+                  width: 150,
+                  height: 120,
+                  fit: BoxFit.cover,
+                  placeholder: (context, url) => Container(
+                    width: 150,
+                    height: 120,
+                    color: const Color(0x1304544D),
+                    child: const Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  ),
+                  errorWidget: (context, url, error) => Container(
+                    width: 150,
+                    height: 120,
+                    color: const Color(0x1304544D),
+                    child: const Center(
+                      child: Icon(
+                        Iconsax.image_outline,
+                        color: Colors.grey,
+                        size: 75,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -116,7 +164,7 @@ class _HomeHeaderImageState extends State<HomeHeaderImage>
                     child: Text(
                       NumberFormat.currency(
                               locale: "fr_FR", decimalDigits: 0, symbol: "FCFA")
-                          .format(4899),
+                          .format(widget.flashSale.product.price),
                       style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w700,
@@ -132,7 +180,7 @@ class _HomeHeaderImageState extends State<HomeHeaderImage>
                                 locale: "fr_FR",
                                 decimalDigits: 0,
                                 symbol: "FCFA")
-                            .format(7900),
+                            .format(widget.flashSale.product.oldPrice),
                         style: const TextStyle(
                           fontSize: 12,
                           fontStyle: FontStyle.italic,
@@ -148,9 +196,9 @@ class _HomeHeaderImageState extends State<HomeHeaderImage>
                         decoration: BoxDecoration(
                             color: AppTheme.kRedColor,
                             borderRadius: BorderRadius.circular(22)),
-                        child: const Text(
-                          "- 7%",
-                          style: TextStyle(
+                        child: Text(
+                          "- ${widget.flashSale.discountPercentage}%",
+                          style: const TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.w500,
                             color: Colors.white,

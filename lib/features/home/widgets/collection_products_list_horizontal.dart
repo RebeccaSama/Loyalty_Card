@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:intl/intl.dart';
+import 'package:loyalty_card/core/constants/constants.dart';
 import 'package:loyalty_card/core/models/products/product.dart';
 import 'package:loyalty_card/core/skeleton/skeleton_product_horizontal.dart';
 import 'package:loyalty_card/core/theme/themes.dart';
 import 'package:loyalty_card/features/home/controller/product_controller.dart';
 import 'package:loyalty_card/features/product_details/views/product_details_view.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class CollectionProductsHorizontal extends ConsumerWidget {
   const CollectionProductsHorizontal({
@@ -70,22 +72,35 @@ class CollectionProductsHorizontal extends ConsumerWidget {
                                     color: const Color(0x1304544D),
                                     borderRadius: BorderRadius.circular(8),
                                   ),
-                                  child: const Center(
-                                    child: Icon(
-                                      Iconsax.image_outline,
-                                      color: Colors.grey,
-                                      size: 75,
+                                  child: CachedNetworkImage(
+                                    imageUrl: Constants.baseUrlImage +
+                                        product.imageUrl,
+                                    imageBuilder: (context, imageProvider) =>
+                                        ClipRRect(
+                                      borderRadius: BorderRadius.circular(8),
+                                      child: Image(
+                                        image: imageProvider,
+                                        fit: BoxFit.cover,
+                                        height: 120,
+                                        width: double.infinity,
+                                      ),
+                                    ),
+                                    placeholder: (context, url) => const Center(
+                                      child: Icon(
+                                        Iconsax.image_outline,
+                                        color: Colors.grey,
+                                        size: 75,
+                                      ),
+                                    ),
+                                    errorWidget: (context, url, error) =>
+                                        const Center(
+                                      child: Icon(
+                                        Iconsax.image_outline,
+                                        color: Colors.grey,
+                                        size: 75,
+                                      ),
                                     ),
                                   ),
-                                  // child: ClipRRect(
-                                  //   borderRadius: BorderRadius.circular(8),
-                                  //   child: Image.asset(
-                                  //     DataImages.product,
-                                  //     fit: BoxFit.cover,
-                                  //     height: 120,
-                                  //     width: double.infinity,
-                                  //   ),
-                                  // ),
                                 ),
                                 Padding(
                                   padding:
@@ -130,7 +145,7 @@ class CollectionProductsHorizontal extends ConsumerWidget {
                                               topLeft: Radius.circular(22),
                                               bottomLeft: Radius.circular(22))),
                                       child: Text(
-                                        "- ${product.discount.percentage}%",
+                                        "- ${(((product.oldPrice - product.price) / product.oldPrice) * 100).toStringAsFixed(1)}%",
                                         style: const TextStyle(
                                           fontSize: 12,
                                           fontWeight: FontWeight.w500,
@@ -146,31 +161,30 @@ class CollectionProductsHorizontal extends ConsumerWidget {
                                 IntrinsicHeight(
                                   child: Row(
                                     children: [
-                                      SizedBox(
+                                      const SizedBox(
                                         width: 57,
                                         child: Row(
                                           children: [
                                             Icon(
-                                              product.rating == 0
-                                                  ? Icons.star_outline
-                                                  : Icons.star_half,
-                                              color: const Color(0xffFFC51C),
+                                              // product.rating == 0
+                                              Icons.star_outline,
+                                              // : Icons.star_half,
+                                              color: Color(0xffFFC51C),
                                               size: 18,
                                             ),
                                             Padding(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                      horizontal: 4.0),
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 4.0),
                                               child: Text(
-                                                product.rating.toString(),
-                                                style: const TextStyle(
+                                                "0",
+                                                style: TextStyle(
                                                   fontSize: 13,
                                                   fontWeight: FontWeight.w400,
                                                   color: Colors.black54,
                                                 ),
                                               ),
                                             ),
-                                            const Icon(
+                                            Icon(
                                               Icons.keyboard_arrow_down,
                                               size: 12,
                                               color: Colors.black54,

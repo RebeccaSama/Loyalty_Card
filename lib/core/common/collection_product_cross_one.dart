@@ -103,7 +103,7 @@ class CollectionProductCrossOne extends ConsumerWidget {
                             ),
                           ),
                           child: Text(
-                            "-${product.discount.percentage}%",
+                            "- ${(((product.oldPrice - product.price) / product.oldPrice) * 100).toStringAsFixed(1)}%",
                             style: const TextStyle(
                               color: AppTheme.kWhiteColor,
                               fontSize: 12,
@@ -141,9 +141,9 @@ class CollectionProductCrossOne extends ConsumerWidget {
                           onRatingUpdate: (_) {},
                         ),
                         const SizedBox(width: 5.5),
-                        Text(
-                          product.rating.toString(),
-                          style: const TextStyle(
+                        const Text(
+                          "0",
+                          style: TextStyle(
                             color: Color.fromRGBO(0, 0, 0, 0.54),
                             fontSize: 13,
                           ),
