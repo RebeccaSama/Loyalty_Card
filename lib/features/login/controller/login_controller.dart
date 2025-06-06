@@ -41,11 +41,11 @@ class LoginController extends ChangeNotifier {
         body: {"phoneNumber": phoneNumberController.text},
       );
 
-      final accessToken = response.data['accessToken'];
+      final accessToken = response.data['token'];
       final user = response.data['user'];
 
       final prefs = await SharedPreferences.getInstance();
-      await prefs.setString('accessToken', accessToken);
+      await prefs.setString('token', accessToken);
       await prefs.setString('user', jsonEncode(user));
       print(accessToken);
       if (!context.mounted) return;
@@ -80,7 +80,7 @@ class LoginController extends ChangeNotifier {
         isLoading = true;
       }
 
-      final token = prefs.getString('accessToken');
+      final token = prefs.getString('token');
 
       await ref.read(apiProvider).launchRequest(
         endPoint: "/auth/logout",
@@ -90,7 +90,7 @@ class LoginController extends ChangeNotifier {
         },
       );
 
-      await prefs.remove('accessToken');
+      await prefs.remove('token');
       await prefs.remove('user');
 
       if (context.mounted) {

@@ -120,7 +120,7 @@ class _LoginViewState extends ConsumerState<LoginView> {
                       children: [
                         const Text("Vous n'avez pas de compte ?",
                             style: TextStyle(
-                              fontSize: 16,
+                              fontSize: 12,
                               fontWeight: FontWeight.w300,
                             )),
                         TextButton(
@@ -134,7 +134,7 @@ class _LoginViewState extends ConsumerState<LoginView> {
                             child: const Text("créer un compte",
                                 style: TextStyle(
                                   color: AppTheme.kPrimaryColor,
-                                  fontSize: 16,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.w600,
                                 ))),
                       ],

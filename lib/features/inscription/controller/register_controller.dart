@@ -39,7 +39,7 @@ class RegisterController extends ChangeNotifier {
 
   Future<void> register(BuildContext context) async {
     print({
-      "fullName": "${firstNameController.text} ${lastNameController.text}",
+      "fullName": "${firstNameController.text}${lastNameController.text}",
       "email": emailController.text,
       "phoneNumber": phoneNumberController.text,
     });
@@ -47,16 +47,13 @@ class RegisterController extends ChangeNotifier {
       isLoading = true;
       notifyListeners();
       var phoneNumber = phoneNumberController.text.replaceAll(" ", "");
-      await ref.read(apiProvider).launchRequest(
-          isFromData: true,
-          endPoint: "/auth/register",
-          method: "POST",
-          body: {
-            "fullName":
-                "${firstNameController.text} ${lastNameController.text}",
-            "email": emailController.text,
-            "phoneNumber": phoneNumber,
-          });
+      await ref
+          .read(apiProvider)
+          .launchRequest(endPoint: "/auth/register", method: "POST", body: {
+        "fullName": "${firstNameController.text}${lastNameController.text}",
+        "email": emailController.text,
+        "phoneNumber": phoneNumber,
+      });
       if (!context.mounted) return;
       CustomToast.showSuccessToast(context, "User registered successfully");
       Navigator.pushReplacement(
